@@ -1,0 +1,4 @@
+JavaScript works well with other languages and can be used in many applications.
+JavaScript provides methods you can use in your application to get the current screen size and use the result to perform actions based on that size. Using CSS and HTML, you can resize, hide, shrink, enlarge or move content to look good on any screen.
+JavaScript is an interpreted language, not a compiled language. Unlike, for example, a language such as C++ or Java, which must be compiled before running, JavaScript has no compilation step. Instead, the interpreter in the browser reads the JavaScript code, interprets each line, and runs it. Modern browsers use a just-in-time (JIT) compilation technology, which compiles JavaScript into executable byte code just before it runs.
+Contrary to what its name might suggest, JavaScript is not directly related to Java.
