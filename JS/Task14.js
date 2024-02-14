@@ -12,7 +12,7 @@ const book = {
     description:'A crime Fiction',
     numberOfPages: 168,
     author:'James Hadley Chase',
-    reading: false,
+    isReading: false,
     toggleReadingStatus: function(){
         if(book.isReading===true) {
             book.isReading = false
