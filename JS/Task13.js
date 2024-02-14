@@ -14,7 +14,7 @@
 const book = {
     title:'The Wary Transgressor',
     description:'A crime Fiction',
-    numberOfPages: 168,
+    numberOfPages: 198,
     author:'James Hadley Chase',
-    reading: false
+    isReading: false
 }
