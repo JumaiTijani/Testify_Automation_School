@@ -9710,12 +9710,24 @@
 											"var jsonData = pm.response.json();",
 											"console.log(jsonData.contacts)",
 											"",
-											"//To test that the contacts field in the response body is not empty",
-											"pm.test(\"Message field in the response is not empty\", function () {",
+											"",
+											"",
+											"//To test that the response body is in a valid JSON format",
+											"",
+											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
+											"  pm.response.to.be.json;",
+											"});",
+											"",
+											"//To test that the Contacts object contains success and failure properties",
+											"pm.test(\"Contacts object contains success and failure properties\", function () {",
 											"    const responseData = pm.response.json();",
 											"    ",
-											"    pm.expect(responseData.message).to.exist.and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
-											"});"
+											"    pm.expect(responseData.contacts).to.be.an('object');",
+											"    pm.expect(responseData.contacts).to.have.property('success');",
+											"    pm.expect(responseData.contacts).to.have.property('failure');",
+											"});",
+											"",
+											""
 										],
 										"type": "text/javascript"
 									}
