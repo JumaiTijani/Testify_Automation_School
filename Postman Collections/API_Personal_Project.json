@@ -7878,7 +7878,7 @@
 										"id": "65eb5fc1-ce3d-430d-9607-fa6fb153e5ff",
 										"exec": [
 											"",
-											"pm.test(\"Successful PUT request\", function () {",
+											"pm.test(\"Successful DEL request\", function () {",
 											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
 											"});",
 											"",
@@ -8659,11 +8659,39 @@
 						},
 						{
 							"name": "Get lists in a folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "83dcc9cc-7376-4fee-a495-ec317ff73bdc",
+										"exec": [
+											"//Assertion for response code",
+											"pm.test(\"Successful GET request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([200, 202]);",
+											"});",
+											"",
+											"",
+											"//Assertion for average response time",
+											"pm.test(\"Response time is less than 500ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(500);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "6633f0f0-9e24-4549-8ad9-446470823831",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -8701,9 +8729,8 @@
 									],
 									"variable": [
 										{
-											"id": "abd46a49-f6af-48c7-a93b-8db6a0f0e90f",
 											"key": "folderId",
-											"value": "13396752",
+											"value": "{{folderId}}",
 											"description": "(Required) Id of the folder"
 										}
 									]
@@ -8891,11 +8918,38 @@
 						},
 						{
 							"name": "Update a folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ced1112a-68ae-4068-90aa-6a910167b675",
+										"exec": [
+											"//Assert the response status code",
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "ee9469a6-40c9-43a6-adc7-e2c975a5fbe2",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -8909,7 +8963,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Wordpress Contacts\"\n}",
+									"raw": "{\n  \"name\": \"Wordpress\"\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -8928,9 +8982,8 @@
 									],
 									"variable": [
 										{
-											"id": "d5a1ff4d-3868-41d3-9908-2feac43fcb9a",
 											"key": "folderId",
-											"value": "13396752",
+											"value": "{{folderId}}",
 											"description": "(Required) Id of the folder"
 										}
 									]
@@ -9100,11 +9153,51 @@
 						},
 						{
 							"name": "Delete a folder (and all its lists)",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "852781de-d52a-4917-9197-6ffcb6df1c1b",
+										"exec": [
+											"pm.test('Status code is 204', function () {",
+											"    pm.response.to.have.status(204);",
+											"})",
+											"",
+											"pm.test('Successful DEL request', function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([",
+											"        204,",
+											"        200",
+											"    ]);",
+											"})",
+											"",
+											"",
+											"//To test that the response body does not contain any sensitive information",
+											"pm.test(\"Ensure response does not contain sensitive information\", function () {",
+											"    const responseData = pm.response.text();",
+											"    ",
+											"    pm.expect(responseData).to.not.include('password');",
+											"    pm.expect(responseData).to.not.include('creditCardNumber');",
+											"    pm.expect(responseData).to.not.include('socialSecurityNumber');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "bf916a17-decc-40dd-9ee4-57a56acb7934",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -9124,9 +9217,8 @@
 									],
 									"variable": [
 										{
-											"id": "0a8cc0b8-27ad-470d-ad02-21aac4eb0a45",
 											"key": "folderId",
-											"value": "13396752",
+											"value": "{{folderId}}",
 											"description": "(Required) Id of the folder"
 										}
 									]
