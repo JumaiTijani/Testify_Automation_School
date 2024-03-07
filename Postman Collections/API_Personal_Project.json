@@ -6148,6 +6148,10 @@
 											"    pm.expect(pm.response.code).to.equal(201);",
 											"});",
 											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.id)",
+											"",
 											"//To assert that response body contains a required field(id)",
 											"pm.test(\"Response has the required field - id\", function () {",
 											"    const responseData = pm.response.json();",
@@ -6161,7 +6165,11 @@
 											"  pm.expect(pm.response.json()).to.not.be.empty;",
 											"});",
 											"",
-											""
+											"//Set contactId Value",
+											"pm.test(\"Set contactId Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"contactId\", jsonData.id);    ",
+											"});"
 										],
 										"type": "text/javascript"
 									}
@@ -8103,11 +8111,56 @@
 					"item": [
 						{
 							"name": "Create a folder",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "a139256b-0fbf-46d6-9551-3dd168c9c649",
+										"exec": [
+											"//To assert that response status code is 201",
+											"pm.test('Response status code is 201', function () {",
+											"    pm.expect(pm.response.code).to.equal(201);",
+											"})",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.id)",
+											"",
+											"//To assert that response body contains a required field(id)",
+											"pm.test('Response has the required field - id', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist;",
+											"})",
+											"",
+											"//To assert that the response body has content",
+											"pm.test('Response body is not empty', function () {",
+											"    pm.expect(pm.response.json()).to.not.be.empty;",
+											"})",
+											"",
+											"",
+											"//Set folderId Value",
+											"pm.test(\"Set folderId Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"folderId\", jsonData.id);    ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "ee09d0d8-2bf3-4e09-8055-bcdaad4574cd",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
