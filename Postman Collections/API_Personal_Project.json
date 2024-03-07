@@ -9366,6 +9366,155 @@
 					"name": "Lists",
 					"item": [
 						{
+							"name": "Create a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0a73f83d-ef06-439b-8a6e-ddf7cb995cce",
+										"exec": [
+											"//To assert that response status code is 201",
+											"pm.test('Response status code is 201', function () {",
+											"    pm.expect(pm.response.code).to.equal(201);",
+											"})",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.id)",
+											"",
+											"//To assert that response body contains a required field(id)",
+											"pm.test('Response has the required field - id', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist;",
+											"})",
+											"",
+											"//To assert that the response body has content",
+											"pm.test('Response body is not empty', function () {",
+											"    pm.expect(pm.response.json()).to.not.be.empty;",
+											"})",
+											"",
+											"",
+											"//Set listId Value",
+											"pm.test(\"Set listId Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"listId\", jsonData.id);    ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7911a168-1b2d-4cf2-b49b-50fa6c4ca12e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"folderId\": 1,\n  \"name\": \"{{$randomFirstName}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/contacts/lists"
+							},
+							"response": [
+								{
+									"id": "aaae8855-3db1-4fb5-8385-b70178f83a49",
+									"name": "successfully created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts/lists"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"id\": 5\n}"
+								},
+								{
+									"id": "686d6f75-b1e7-4cbe-bca1-29d3255e9b81",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts/lists"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
 							"name": "Get all the lists",
 							"event": [
 								{
@@ -9550,155 +9699,6 @@
 							]
 						},
 						{
-							"name": "Create a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "0a73f83d-ef06-439b-8a6e-ddf7cb995cce",
-										"exec": [
-											"//To assert that response status code is 201",
-											"pm.test('Response status code is 201', function () {",
-											"    pm.expect(pm.response.code).to.equal(201);",
-											"})",
-											"",
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.id)",
-											"",
-											"//To assert that response body contains a required field(id)",
-											"pm.test('Response has the required field - id', function () {",
-											"    const responseData = pm.response.json();",
-											"    pm.expect(responseData).to.be.an('object');",
-											"    pm.expect(responseData.id).to.exist;",
-											"})",
-											"",
-											"//To assert that the response body has content",
-											"pm.test('Response body is not empty', function () {",
-											"    pm.expect(pm.response.json()).to.not.be.empty;",
-											"})",
-											"",
-											"",
-											"//Set listId Value",
-											"pm.test(\"Set listId Value\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.environment.set(\"listId\", jsonData.id);    ",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "7911a168-1b2d-4cf2-b49b-50fa6c4ca12e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"folderId\": 1,\n  \"name\": \"{{$randomFirstName}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/contacts/lists"
-							},
-							"response": [
-								{
-									"id": "aaae8855-3db1-4fb5-8385-b70178f83a49",
-									"name": "successfully created",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/contacts/lists"
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"id\": 5\n}"
-								},
-								{
-									"id": "686d6f75-b1e7-4cbe-bca1-29d3255e9b81",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/contacts/lists"
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
 							"name": "Add existing contacts to a list",
 							"event": [
 								{
@@ -9758,7 +9758,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"{{email}}\"\n  ]\n}",
+									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"bettie.streich@yahoo.com\",\n    \"velva60@yahoo.com\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9956,11 +9956,51 @@
 						},
 						{
 							"name": "Get contacts in a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ed90341c-ab1d-4cc0-a25f-4c36267fbdd7",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts[3].email)",
+											"",
+											"//set contactEmail value",
+											"pm.test(\"Set contactEmail Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"contactEmail\", jsonData.contacts[3].email);    ",
+											"});",
+											"",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts[3].listIds)",
+											"",
+											"//To test for the value of listIds",
+											"pm.test(\"Value of listIds\", function () {",
+											"  var jsonData = pm.response.json();",
+											"  pm.expect(jsonData.contacts[3].listIds).to.include(11);",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "04778e9b-d3d9-4d40-b923-de7ff95e3994",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -9969,7 +10009,7 @@
 									}
 								],
 								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
+									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts",
 									"host": [
 										"{{baseUrl}}"
 									],
@@ -9983,29 +10023,32 @@
 										{
 											"key": "modifiedSince",
 											"value": "veniam elit in",
-											"description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n"
+											"description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n",
+											"disabled": true
 										},
 										{
 											"key": "limit",
 											"value": "50",
-											"description": "Number of documents per page"
+											"description": "Number of documents per page",
+											"disabled": true
 										},
 										{
 											"key": "offset",
 											"value": "0",
-											"description": "Index of the first document of the page"
+											"description": "Index of the first document of the page",
+											"disabled": true
 										},
 										{
 											"key": "sort",
 											"value": "desc",
-											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed"
+											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed",
+											"disabled": true
 										}
 									],
 									"variable": [
 										{
-											"id": "08a3a736-c220-46c7-b000-f9ae12441a1e",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
