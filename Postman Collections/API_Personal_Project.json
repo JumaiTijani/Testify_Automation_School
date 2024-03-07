@@ -9964,23 +9964,23 @@
 										"exec": [
 											"//To extract data from the responce body",
 											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts[3].email)",
+											"console.log(jsonData.contacts[1].email)",
 											"",
 											"//set contactEmail value",
 											"pm.test(\"Set contactEmail Value\", function () {",
 											"    var jsonData = pm.response.json();",
-											"    pm.environment.set(\"contactEmail\", jsonData.contacts[3].email);    ",
+											"    pm.environment.set(\"contactEmail\", jsonData.contacts[1].email);    ",
 											"});",
 											"",
 											"",
 											"//To extract data from the responce body",
 											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts[3].listIds)",
+											"console.log(jsonData.contacts[1].listIds)",
 											"",
 											"//To test for the value of listIds",
 											"pm.test(\"Value of listIds\", function () {",
 											"  var jsonData = pm.response.json();",
-											"  pm.expect(jsonData.contacts[3].listIds).to.include(11);",
+											"  pm.expect(jsonData.contacts[1].listIds).to.include(11);",
 											"});",
 											"",
 											""
@@ -10248,11 +10248,49 @@
 						},
 						{
 							"name": "Delete a contact from a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e0ede12d-751e-46d8-b71a-c6a6a45e1797",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts)",
+											"",
+											"",
+											"",
+											"//To test that the response body is in a valid JSON format",
+											"",
+											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
+											"  pm.response.to.be.json;",
+											"});",
+											"",
+											"//To test that the Contacts object contains success and failure properties",
+											"pm.test(\"Contacts object contains success and failure properties\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.contacts).to.be.an('object');",
+											"    pm.expect(responseData.contacts).to.have.property('success');",
+											"    pm.expect(responseData.contacts).to.have.property('failure');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "e172fcf5-d7c1-4f82-883f-af72227a63d1",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -10266,7 +10304,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"{{contactEmail}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10287,9 +10325,8 @@
 									],
 									"variable": [
 										{
-											"id": "2b5cd901-9bf5-4e52-9283-7611313f1a94",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
@@ -10465,11 +10502,56 @@
 						},
 						{
 							"name": "Get a list's details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2295bbeb-1f78-4687-aa9f-cdf26c3f2bd0",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData)",
+											"",
+											"//To assert some of the field returned in the response body",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.name).to.exist;",
+											"    pm.expect(responseData.id).to.exist;",
+											"    pm.expect(responseData.totalBlacklisted).to.exist;",
+											"});",
+											"",
+											"//To assert the value of access-control-allow-methods in the header is PUT, POST, GET, DELETE, PATCH, OPTIONS",
+											"pm.test(\"Response access-control-allow-methods is PUT, POST, GET, DELETE, PATCH, OPTIONS\", function () {",
+											"  pm.expect(pm.response.headers.get(\"access-control-allow-methods\")).to.include(\"PUT, POST, GET, DELETE, PATCH, OPTIONS\");",
+											"});",
+											"",
+											"//To test that the response body does not contain any sensitive information",
+											"pm.test(\"Ensure response does not contain sensitive information\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.not.have.property('password');",
+											"    pm.expect(responseData).to.not.have.property('debitCardNumber');",
+											"    pm.expect(responseData).to.not.have.property('nationalIdentificationNumber');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "64ef51ca-e856-4e4c-9f06-2511c1f7f113",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -10489,9 +10571,8 @@
 									],
 									"variable": [
 										{
-											"id": "0dbca363-1174-43f2-b538-02c1936f29dd",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
