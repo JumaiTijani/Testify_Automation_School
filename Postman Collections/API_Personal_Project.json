@@ -6697,6 +6697,31 @@
 						},
 						{
 							"name": "Update multiple contacts",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "10d41434-a785-4401-abd0-5bd1910cc4bc",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData)",
+											"",
+											"//To assert the presence of a string in the responce body",
+											"pm.test(\"Body matches string\", function () {",
+											"    pm.expect(jsonData.message).to.include(\"Invalid input at indexes 0,1\");",
+											"});",
+											"",
+											"",
+											"//To assert the string returned in the Status code",
+											"pm.test(\"Status code name has string\", function () {",
+											"    pm.response.to.have.status(\"Bad Request\");",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "56b44a6f-609a-45ba-8cdd-cdb94379ddfa",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
