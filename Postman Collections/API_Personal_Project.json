@@ -8260,11 +8260,52 @@
 						},
 						{
 							"name": "Get all folders",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "4a7c94d8-77eb-4bef-84d4-e60c5fa606d7",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.folders) ",
+											"",
+											"//To test that the folders array is not empty",
+											"pm.test('Response contains folders array with at least one element', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.folders).to.be.an('array').that.is.not.empty;",
+											"})",
+											"",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.count) ",
+											"",
+											"//To test for the value of count",
+											"pm.test('Count is a positive integer', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.count).to.be.a('number');",
+											"    pm.expect(responseData.count).to.be.at.least(0);",
+											"})",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "8f3016f5-f7e1-4a32-96cf-4213687011c4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -8405,11 +8446,56 @@
 						},
 						{
 							"name": "Returns a folder's details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "6148c4f5-58d2-40f3-944f-aabc27fcec43",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData)",
+											"",
+											"//To assert some of the field returned in the response body",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.name).to.exist;",
+											"    pm.expect(responseData.id).to.exist;",
+											"    pm.expect(responseData.totalBlacklisted).to.exist;",
+											"});",
+											"",
+											"//To assert the value of access-control-allow-methods in the header is PUT, POST, GET, DELETE, PATCH, OPTIONS",
+											"pm.test(\"Response access-control-allow-methods is PUT, POST, GET, DELETE, PATCH, OPTIONS\", function () {",
+											"  pm.expect(pm.response.headers.get(\"access-control-allow-methods\")).to.include(\"PUT, POST, GET, DELETE, PATCH, OPTIONS\");",
+											"});",
+											"",
+											"//To test that the response body does not contain any sensitive information",
+											"pm.test(\"Ensure response does not contain sensitive information\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.not.have.property('password');",
+											"    pm.expect(responseData).to.not.have.property('debitCardNumber');",
+											"    pm.expect(responseData).to.not.have.property('nationalIdentificationNumber');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "fb01cf5e-c3f2-4522-b4f6-d701fa97754a",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
@@ -8429,9 +8515,8 @@
 									],
 									"variable": [
 										{
-											"id": "bab4e164-dca4-4c53-bbf1-6ad5860b692e",
 											"key": "folderId",
-											"value": "13396752",
+											"value": "{{folderId}}",
 											"description": "(Required) id of the folder"
 										}
 									]
