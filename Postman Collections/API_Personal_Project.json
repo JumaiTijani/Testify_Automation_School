@@ -9700,11 +9700,39 @@
 						},
 						{
 							"name": "Add existing contacts to a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ce17956e-db32-49af-8de5-11dacd5bf772",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts)",
+											"",
+											"//To test that the contacts field in the response body is not empty",
+											"pm.test(\"Message field in the response is not empty\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.message).to.exist.and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "a9a5e37e-d947-4243-b406-05ebc263ac16",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "POST",
 								"header": [
 									{
@@ -9718,7 +9746,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+									"raw": "{\n  \"emails\": [\n    \"{{email}}\"\n  ]\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -9739,9 +9767,8 @@
 									],
 									"variable": [
 										{
-											"id": "4e1ae07d-1498-4add-b416-ec68cdb1998d",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
