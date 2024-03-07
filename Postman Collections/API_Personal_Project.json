@@ -10715,11 +10715,43 @@
 						},
 						{
 							"name": "Update a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98fc30fc-e7fe-46cc-9f85-0c9156fab279",
+										"exec": [
+											"//Assert the response status code",
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"});",
+											"",
+											"//Test that the value of Server in the response header is cloudflare",
+											"pm.test(\"Response Server is cloudflare\", function () {",
+											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "16c3f6ea-18a0-4f32-9b72-9cabbbfacd85",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "PUT",
 								"header": [
 									{
@@ -10733,7 +10765,7 @@
 								],
 								"body": {
 									"mode": "raw",
-									"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
+									"raw": "{\n  \"name\": \"{{$randomFullName}}\"\n  //\"folderId\": {{folderId}}\n}",
 									"options": {
 										"raw": {
 											"language": "json"
@@ -10752,9 +10784,8 @@
 									],
 									"variable": [
 										{
-											"id": "6710a0db-1d31-43b7-a14a-e602066cef1d",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
@@ -10924,11 +10955,43 @@
 						},
 						{
 							"name": "Delete a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1cd457fc-1e5a-4562-8e9e-2b0678a468c3",
+										"exec": [
+											"//Assert the response status code",
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"});",
+											"",
+											"//Test that the value of Server in the response header is cloudflare",
+											"pm.test(\"Response Server is cloudflare\", function () {",
+											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "966271dd-d69b-4abe-9e15-7ce9cb528ab4",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "DELETE",
 								"header": [
 									{
@@ -10948,9 +11011,8 @@
 									],
 									"variable": [
 										{
-											"id": "8880cbac-a44d-4e15-872d-0b3c7b85d157",
 											"key": "listId",
-											"value": "13396752",
+											"value": "{{listId}}",
 											"description": "(Required) Id of the list"
 										}
 									]
