@@ -6348,11 +6348,6 @@
 											"    pm.environment.set(\"email\", jsonData.contacts[0].email);    ",
 											"});",
 											"",
-											"//set contactId value",
-											"pm.test(\"Set contactId Value\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.environment.set(\"contactId\", jsonData.contacts[0].id);    ",
-											"});",
 											"",
 											""
 										],
