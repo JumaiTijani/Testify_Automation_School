@@ -9367,11 +9367,50 @@
 					"item": [
 						{
 							"name": "Get all the lists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "492305fd-5732-4c17-b5ce-35da759fdaa4",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.lists) ",
+											"",
+											"//To test that the folders array is not empty",
+											"pm.test('Response contains lists array with at least one element', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.lists).to.be.an('array').that.is.not.empty;",
+											"})",
+											"",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.count) ",
+											"",
+											"//To test for the value of count",
+											"pm.test('Count is a positive integer', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.count).to.be.a('number');",
+											"    pm.expect(responseData.count).to.be.at.least(0);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
 							"id": "6c39126a-c7e4-4187-b369-02d187eca61f",
 							"protocolProfileBehavior": {
 								"disableBodyPruning": true
 							},
 							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
 								"method": "GET",
 								"header": [
 									{
