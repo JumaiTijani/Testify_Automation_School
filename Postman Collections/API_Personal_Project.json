@@ -1356,7 +1356,7 @@
 					"auth": {
 						"type": "apikey",
 						"apikey": {
-							"value": "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",
+							"value": "{{api-key}}",
 							"in": "header",
 							"key": "api-key"
 						}
@@ -1365,7 +1365,7 @@
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "7b42cf20-6319-4497-8757-c26ae23c7fbd",
+								"id": "86c5753f-cc48-4480-ad63-55b74b36141a",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1375,7 +1375,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "1388f4c9-af20-4d40-8f41-033651f92243",
+								"id": "ec0fac3b-1312-4083-a468-3a9a5dda8c52",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2668,7 +2668,36 @@
 							]
 						}
 					],
-					"id": "19239bf0-a656-4ed1-9908-7c74adba09f0"
+					"id": "19239bf0-a656-4ed1-9908-7c74adba09f0",
+					"auth": {
+						"type": "apikey",
+						"apikey": {
+							"value": "{{api-key}}",
+							"key": "api-key"
+						}
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "2268893f-1fd5-4fd3-b734-6bd5cee73867",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "f5b58c37-3365-44ee-b738-d07a92a0f07b",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
 				},
 				{
 					"name": "Tasks",
@@ -3913,7 +3942,36 @@
 							]
 						}
 					],
-					"id": "72aba2ae-c969-4d35-bbc3-c1205cd9f321"
+					"id": "72aba2ae-c969-4d35-bbc3-c1205cd9f321",
+					"auth": {
+						"type": "apikey",
+						"apikey": {
+							"value": "{{api-key}}",
+							"key": "api-key"
+						}
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "763c5c64-6a19-44ef-bb7b-01813e0f14c0",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "4ffae600-fd06-414e-b1d6-ce391827eceb",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
 				},
 				{
 					"name": "Notes",
@@ -6127,7 +6185,36 @@
 					"id": "7109e188-c770-4f0b-a1f8-8bcfceef5abc"
 				}
 			],
-			"id": "3a66baa2-76c5-4d04-92c9-69f46c39ea6d"
+			"id": "3a66baa2-76c5-4d04-92c9-69f46c39ea6d",
+			"auth": {
+				"type": "apikey",
+				"apikey": {
+					"key": "api-key",
+					"value": "{{api-key}}"
+				}
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "484a3777-3cd2-4110-a2e2-f3a439d75538",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "8fac6513-147e-4e79-916f-2bda6e4f0c2b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
 		},
 		{
 			"name": "Contact management",
@@ -11243,6 +11330,186 @@
 							]
 						},
 						{
+							"name": "Create contact attribute",
+							"id": "5140cdcd-d45c-4275-af3e-21e9dd17a535",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"value\": \"COUNT[READERS,READERS,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Men\",\n      \"value\": 2\n    }\n  ],\n  \"type\": \"text\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"attributes",
+										":attributeCategory",
+										":attributeName"
+									],
+									"variable": [
+										{
+											"key": "attributeCategory",
+											"value": "global",
+											"description": "(Required) Category of the attribute"
+										},
+										{
+											"key": "attributeName",
+											"value": "READERS",
+											"description": "(Required) Name of the attribute"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "61eeb776-d498-457c-9f13-1a8418fda242",
+									"name": "Attribute created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"value\": \"COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    }\n  ],\n  \"type\": \"text\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"attributes",
+												":attributeCategory",
+												":attributeName"
+											],
+											"variable": [
+												{
+													"key": "attributeCategory",
+													"value": "global",
+													"description": "(Required) Category of the attribute"
+												},
+												{
+													"key": "attributeName",
+													"value": "veniam elit in",
+													"description": "(Required) Name of the attribute"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": ""
+								},
+								{
+									"id": "cf49c91d-b077-4db1-b45d-2e6f4ce25dc5",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"value\": \"COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    }\n  ],\n  \"type\": \"text\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"attributes",
+												":attributeCategory",
+												":attributeName"
+											],
+											"variable": [
+												{
+													"key": "attributeCategory",
+													"value": "global",
+													"description": "(Required) Category of the attribute"
+												},
+												{
+													"key": "attributeName",
+													"value": "veniam elit in",
+													"description": "(Required) Name of the attribute"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
 							"name": "Update contact attribute",
 							"id": "002d8775-8071-4570-a6e8-439031c1986a",
 							"protocolProfileBehavior": {
@@ -11463,181 +11730,6 @@
 									},
 									"status": "Not Found",
 									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Create contact attribute",
-							"id": "5140cdcd-d45c-4275-af3e-21e9dd17a535",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"value\": \"COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    }\n  ],\n  \"type\": \"text\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"attributes",
-										":attributeCategory",
-										":attributeName"
-									],
-									"variable": [
-										{
-											"id": "c5e69175-fc6d-4307-9da7-4be5f02c611b",
-											"key": "attributeCategory",
-											"value": "global",
-											"description": "(Required) Category of the attribute"
-										},
-										{
-											"id": "0b8d3790-ba6c-45cf-82f8-dcd1ca21d255",
-											"key": "attributeName",
-											"value": "veniam elit in",
-											"description": "(Required) Name of the attribute"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "61eeb776-d498-457c-9f13-1a8418fda242",
-									"name": "Attribute created",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"value\": \"COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    }\n  ],\n  \"type\": \"text\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"attributes",
-												":attributeCategory",
-												":attributeName"
-											],
-											"variable": [
-												{
-													"key": "attributeCategory",
-													"value": "global",
-													"description": "(Required) Category of the attribute"
-												},
-												{
-													"key": "attributeName",
-													"value": "veniam elit in",
-													"description": "(Required) Name of the attribute"
-												}
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": ""
-								},
-								{
-									"id": "cf49c91d-b077-4db1-b45d-2e6f4ce25dc5",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"value\": \"COUNT[BLACKLISTED,BLACKLISTED,<,NOW()]\",\n  \"enumeration\": [\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    },\n    {\n      \"label\": \"Women\",\n      \"value\": 1\n    }\n  ],\n  \"type\": \"text\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/attributes/:attributeCategory/:attributeName",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"attributes",
-												":attributeCategory",
-												":attributeName"
-											],
-											"variable": [
-												{
-													"key": "attributeCategory",
-													"value": "global",
-													"description": "(Required) Category of the attribute"
-												},
-												{
-													"key": "attributeName",
-													"value": "veniam elit in",
-													"description": "(Required) Name of the attribute"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
 									"_postman_previewlanguage": "json",
 									"header": [
 										{
