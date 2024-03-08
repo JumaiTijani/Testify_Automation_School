@@ -5083,17 +5083,13 @@
 					],
 					"id": "16263a98-cc34-4ca5-a03f-463045f75e0e",
 					"auth": {
-						"type": "apikey",
-						"apikey": {
-							"value": "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",
-							"key": "api-key"
-						}
+						"type": "noauth"
 					},
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "4d10e0c6-6476-4ade-b70d-95e86c342112",
+								"id": "2b52e162-1bcf-4bbf-9e39-1626bae548d7",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5103,7 +5099,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "7d0c7771-2531-4f4d-88f5-98e8c2f3e8b7",
+								"id": "42072e9e-56c1-463c-8016-1af43c679c82",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -29119,19 +29115,11 @@
 			"id": "74418286-82bd-4fa0-9e78-3c653c8f9e8d"
 		}
 	],
-	"auth": {
-		"type": "apikey",
-		"apikey": {
-			"in": "header",
-			"value": "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",
-			"key": "api-key"
-		}
-	},
 	"event": [
 		{
 			"listen": "prerequest",
 			"script": {
-				"id": "d8b18c86-967d-43ca-a054-39050b3f4e46",
+				"id": "e82c2e77-d9d4-4b5f-ab4c-ff9e5199f1ed",
 				"type": "text/javascript",
 				"exec": [
 					""
@@ -29141,7 +29129,7 @@
 		{
 			"listen": "test",
 			"script": {
-				"id": "7fdd1825-63bf-472d-b09c-a5a6c3bd8828",
+				"id": "d60f963f-63ff-4c72-85a2-d084c4886413",
 				"type": "text/javascript",
 				"exec": [
 					""
