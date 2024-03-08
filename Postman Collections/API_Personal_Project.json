@@ -1354,18 +1354,13 @@
 					],
 					"id": "d58fe568-3911-4b40-982b-9f59c4a222cd",
 					"auth": {
-						"type": "apikey",
-						"apikey": {
-							"value": "{{api-key}}",
-							"in": "header",
-							"key": "api-key"
-						}
+						"type": "noauth"
 					},
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "86c5753f-cc48-4480-ad63-55b74b36141a",
+								"id": "2e49a55c-e3c7-4c6a-bf80-3e99fca60e4d",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -1375,7 +1370,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "ec0fac3b-1312-4083-a468-3a9a5dda8c52",
+								"id": "cba7fea4-1c15-44a5-b138-08356988b10c",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2670,17 +2665,13 @@
 					],
 					"id": "19239bf0-a656-4ed1-9908-7c74adba09f0",
 					"auth": {
-						"type": "apikey",
-						"apikey": {
-							"value": "{{api-key}}",
-							"key": "api-key"
-						}
+						"type": "noauth"
 					},
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "2268893f-1fd5-4fd3-b734-6bd5cee73867",
+								"id": "3444bdcb-04f2-4122-8f7e-bb96cdd710f2",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -2690,7 +2681,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "f5b58c37-3365-44ee-b738-d07a92a0f07b",
+								"id": "95605652-6348-4a89-ade4-e246ce6e76e0",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3944,17 +3935,13 @@
 					],
 					"id": "72aba2ae-c969-4d35-bbc3-c1205cd9f321",
 					"auth": {
-						"type": "apikey",
-						"apikey": {
-							"value": "{{api-key}}",
-							"key": "api-key"
-						}
+						"type": "noauth"
 					},
 					"event": [
 						{
 							"listen": "prerequest",
 							"script": {
-								"id": "763c5c64-6a19-44ef-bb7b-01813e0f14c0",
+								"id": "a29802a8-18ca-401d-b253-08fd39fa398d",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -3964,7 +3951,7 @@
 						{
 							"listen": "test",
 							"script": {
-								"id": "4ffae600-fd06-414e-b1d6-ce391827eceb",
+								"id": "79947f77-6e9f-4f90-afa8-5f57703af395",
 								"type": "text/javascript",
 								"exec": [
 									""
@@ -5094,7 +5081,36 @@
 							]
 						}
 					],
-					"id": "16263a98-cc34-4ca5-a03f-463045f75e0e"
+					"id": "16263a98-cc34-4ca5-a03f-463045f75e0e",
+					"auth": {
+						"type": "apikey",
+						"apikey": {
+							"value": "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",
+							"key": "api-key"
+						}
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "4d10e0c6-6476-4ade-b70d-95e86c342112",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "7d0c7771-2531-4f4d-88f5-98e8c2f3e8b7",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
 				},
 				{
 					"name": "Files",
@@ -6187,17 +6203,13 @@
 			],
 			"id": "3a66baa2-76c5-4d04-92c9-69f46c39ea6d",
 			"auth": {
-				"type": "apikey",
-				"apikey": {
-					"key": "api-key",
-					"value": "{{api-key}}"
-				}
+				"type": "noauth"
 			},
 			"event": [
 				{
 					"listen": "prerequest",
 					"script": {
-						"id": "484a3777-3cd2-4110-a2e2-f3a439d75538",
+						"id": "d7179b6c-161d-481c-99c7-d50f3848579e",
 						"type": "text/javascript",
 						"exec": [
 							""
@@ -6207,7 +6219,7 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8fac6513-147e-4e79-916f-2bda6e4f0c2b",
+						"id": "670e313d-0702-45bc-86d6-a84d36d9273b",
 						"type": "text/javascript",
 						"exec": [
 							""
