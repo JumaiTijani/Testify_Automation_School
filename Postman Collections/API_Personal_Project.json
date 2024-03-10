@@ -1300,7 +1300,7 @@
 											"pm.test(\"Check response data\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.code).to.eql(\"unauthorized\");",
-											"     pm.expect(jsonData.message).to.eql(\"Key not found\");",
+											"     pm.expect(jsonData.message).to.eql(\"authentication not found in headers\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -2449,7 +2449,7 @@
 											"pm.test(\"Check response data\", function () {",
 											"    var jsonData = pm.response.json();",
 											"    pm.expect(jsonData.code).to.eql(\"unauthorized\");",
-											"     pm.expect(jsonData.message).to.eql(\"Key not found\");",
+											"     pm.expect(jsonData.message).to.eql(\"authentication not found in headers\");",
 											"});"
 										],
 										"type": "text/javascript"
@@ -5423,7 +5423,7 @@
 											"key": "file",
 											"description": "(Required) File data to create a file.",
 											"type": "file",
-											"src": "/Users/jumai.tijani/Downloads/bank-bulk-payment (1).csv"
+											"src": "bank-bulk-payment (1).csv"
 										},
 										{
 											"key": "dealId",
