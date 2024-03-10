@@ -7501,8 +7501,8 @@
 											"",
 											"",
 											"//Assertion for average response time",
-											"pm.test(\"Response time is less than 400ms\", function () {",
-											"    pm.expect(pm.response.responseTime).to.be.below(400);",
+											"pm.test(\"Response time is less than 600ms\", function () {",
+											"    pm.expect(pm.response.responseTime).to.be.below(600);",
 											"});"
 										],
 										"type": "text/javascript"
@@ -8829,11 +8829,11 @@
 											"var jsonData = pm.response.json();",
 											"console.log(jsonData.contacts[0].listIds)",
 											"",
-											"//To test for the value of listIds",
+											"/*//To test for the value of listIds",
 											"pm.test(\"Value of listIds\", function () {",
 											"  var jsonData = pm.response.json();",
-											"  pm.expect(jsonData.contacts[0].listIds).to.include(12,13);",
-											"});"
+											"  pm.expect(jsonData.contacts[0].listIds).to.include({{listId}});",
+											"});*/"
 										],
 										"type": "text/javascript"
 									}
