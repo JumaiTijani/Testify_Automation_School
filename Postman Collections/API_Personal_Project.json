@@ -7966,14 +7966,35 @@
 										"id": "65eb5fc1-ce3d-430d-9607-fa6fb153e5ff",
 										"exec": [
 											"",
-											"pm.test(\"Successful DEL request\", function () {",
-											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"pm.test(\"Response status code is 400\", function () {",
+											"    pm.expect(pm.response.code).to.equal(400);",
 											"});",
 											"",
 											"",
-											"pm.test(\"Status code name has string\", function () {",
-											"    pm.response.to.have.status(\"No Content\");",
-											"});"
+											"pm.test(\"Response has the required fields - code and message\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.code).to.exist;",
+											"    pm.expect(responseData.message).to.exist;",
+											"});",
+											"",
+											"",
+											"pm.test(\"Code is in a valid format\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.code).to.exist.and.to.be.a('string');",
+											"});",
+											"",
+											"",
+											"pm.test(\"Message is a non-empty string\", function () {",
+											"  const responseData = pm.response.json();",
+											"",
+											"  pm.expect(responseData.message).to.be.a('string').and.to.have.lengthOf.at.least(1, \"Message should not be empty\");",
+											"});",
+											"",
+											""
 										],
 										"type": "text/javascript"
 									}
@@ -8010,7 +8031,7 @@
 									"variable": [
 										{
 											"key": "identifier",
-											"value": "{{contactId}}",
+											"value": "",
 											"description": "(Required) Email (urlencoded) OR ID of the contact"
 										}
 									]
