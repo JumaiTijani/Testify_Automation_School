@@ -8195,6 +8195,1797 @@
 					"id": "3e4094bd-7732-4dcd-ab68-dfd07fea5f12"
 				},
 				{
+					"name": "Lists",
+					"item": [
+						{
+							"name": "Create a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "0a73f83d-ef06-439b-8a6e-ddf7cb995cce",
+										"exec": [
+											"//To assert that response status code is 201",
+											"pm.test('Response status code is 201', function () {",
+											"    pm.expect(pm.response.code).to.equal(201);",
+											"})",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.id)",
+											"",
+											"//To assert that response body contains a required field(id)",
+											"pm.test('Response has the required field - id', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.id).to.exist;",
+											"})",
+											"",
+											"//To assert that the response body has content",
+											"pm.test('Response body is not empty', function () {",
+											"    pm.expect(pm.response.json()).to.not.be.empty;",
+											"})",
+											"",
+											"",
+											"//Set listId Value",
+											"pm.test(\"Set listId Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"listId\", jsonData.id);    ",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "7911a168-1b2d-4cf2-b49b-50fa6c4ca12e",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"folderId\": 1,\n  \"name\": \"{{$randomFirstName}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{baseUrl}}/contacts/lists"
+							},
+							"response": [
+								{
+									"id": "aaae8855-3db1-4fb5-8385-b70178f83a49",
+									"name": "successfully created",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts/lists"
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"id\": 5\n}"
+								},
+								{
+									"id": "686d6f75-b1e7-4cbe-bca1-29d3255e9b81",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": "{{baseUrl}}/contacts/lists"
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get all the lists",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "492305fd-5732-4c17-b5ce-35da759fdaa4",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.lists) ",
+											"",
+											"//To test that the folders array is not empty",
+											"pm.test('Response contains lists array with at least one element', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.lists).to.be.an('array').that.is.not.empty;",
+											"})",
+											"",
+											"",
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.count) ",
+											"",
+											"//To test for the value of count",
+											"pm.test('Count is a positive integer', function () {",
+											"    const responseData = pm.response.json();",
+											"    pm.expect(responseData.count).to.be.a('number');",
+											"    pm.expect(responseData.count).to.be.at.least(0);",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "6c39126a-c7e4-4187-b369-02d187eca61f",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10",
+											"description": "Number of documents per page"
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Index of the first document of the page"
+										},
+										{
+											"key": "sort",
+											"value": "desc",
+											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "5125397e-1916-41c7-a036-b5515febc73e",
+									"name": "Lists informations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "sort",
+													"value": "desc"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"lists\": [\n    {\n      \"id\": 53,\n      \"name\": \"Spanish_Speakers\",\n      \"totalSubscribers\": 5432,\n      \"totalBlacklisted\": 65,\n      \"uniqueSubscribers\": 5497,\n      \"folderId\": 1\n    },\n    {\n      \"id\": 50,\n      \"name\": \"Other\",\n      \"totalSubscribers\": 10976,\n      \"totalBlacklisted\": 765,\n      \"uniqueSubscribers\": 11741,\n      \"folderId\": 2\n    }\n  ],\n  \"count\": 2\n}"
+								},
+								{
+									"id": "11cdfda3-87f7-4e4e-8e39-fa6d362d53ab",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists"
+											],
+											"query": [
+												{
+													"key": "limit",
+													"value": "10"
+												},
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "sort",
+													"value": "desc"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Add existing contacts to a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ce17956e-db32-49af-8de5-11dacd5bf772",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts)",
+											"",
+											"",
+											"",
+											"//To test that the response body is in a valid JSON format",
+											"",
+											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
+											"  pm.response.to.be.json;",
+											"});",
+											"",
+											"//To test that the Contacts object contains success and failure properties",
+											"pm.test(\"Contacts object contains success and failure properties\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.contacts).to.be.an('object');",
+											"    pm.expect(responseData.contacts).to.have.property('success');",
+											"    pm.expect(responseData.contacts).to.have.property('failure');",
+											"});",
+											"",
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "a9a5e37e-d947-4243-b406-05ebc263ac16",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"bettie.streich@yahoo.com\",\n    \"velva60@yahoo.com\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId",
+										"contacts",
+										"add"
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "0d0e5599-29b4-457f-9572-4ec3fa6a8051",
+									"name": "All contacts have been added successfully to the list with details of failed ones",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"add"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"success\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ],\n  \"failure\": [\n    \"david@example.com\"\n  ]\n}"
+								},
+								{
+									"id": "ff6e4ffd-1398-41ae-8791-a1c1111de907",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"add"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "08d26f9b-8a55-4e95-942b-42ac6b399bc8",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"add"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get contacts in a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "ed90341c-ab1d-4cc0-a25f-4c36267fbdd7",
+										"exec": [
+											"//To extract data from the response body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts[0].email)",
+											"",
+											"//set contactEmail value",
+											"pm.test(\"Set contactEmail Value\", function () {",
+											"    var jsonData = pm.response.json();",
+											"    pm.environment.set(\"contactEmail\", jsonData.contacts[0].email);    ",
+											"});",
+											"",
+											"//To extract data from the response body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts[0].listIds)",
+											"",
+											"//To test for the value of listIds",
+											"pm.test(\"Value of listIds\", function () {",
+											"  var jsonData = pm.response.json();",
+											"  pm.expect(jsonData.contacts[0].listIds).to.include(12,13);",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "04778e9b-d3d9-4d40-b923-de7ff95e3994",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId",
+										"contacts"
+									],
+									"query": [
+										{
+											"key": "modifiedSince",
+											"value": "veniam elit in",
+											"description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n",
+											"disabled": true
+										},
+										{
+											"key": "limit",
+											"value": "50",
+											"description": "Number of documents per page",
+											"disabled": true
+										},
+										{
+											"key": "offset",
+											"value": "0",
+											"description": "Index of the first document of the page",
+											"disabled": true
+										},
+										{
+											"key": "sort",
+											"value": "desc",
+											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed",
+											"disabled": true
+										}
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "8a8b0c86-423d-45d5-9baa-df3a4a7618de",
+									"name": "Contact informations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts"
+											],
+											"query": [
+												{
+													"key": "modifiedSince",
+													"value": "veniam elit in"
+												},
+												{
+													"key": "limit",
+													"value": "50"
+												},
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "sort",
+													"value": "desc"
+												}
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"contacts\": [\n    {\n      \"email\": \"alex.pain@example.com\",\n      \"id\": 45,\n      \"emailBlacklisted\": false,\n      \"smsBlacklisted\": true,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12,\n        9,\n        20\n      ],\n      \"listUnsubscribed\": [\n        1,\n        2\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Pain\",\n        \"FIRSTNAME\": \"Alex\",\n        \"DOB\": \"2010-12-31T00:00:00.000Z\",\n        \"GENDER\": \"Kid\"\n      }\n    },\n    {\n      \"email\": \"john.smith@example.com\",\n      \"id\": 32,\n      \"emailBlacklisted\": true,\n      \"smsBlacklisted\": false,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12\n      ],\n      \"listUnsubscribed\": [\n        1\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Smith\",\n        \"FIRSTNAME\": \"John\",\n        \"DOB\": \"1986-06-21T00:00:00.000Z\",\n        \"GENDER\": \"Men\"\n      }\n    },\n    {\n      \"email\": \"helen.rose@example.com\",\n      \"id\": 65,\n      \"emailBlacklisted\": true,\n      \"smsBlacklisted\": false,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12,\n        9,\n        20\n      ],\n      \"listUnsubscribed\": [\n        1\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Rose\",\n        \"FIRSTNAME\": \"Helen\",\n        \"DOB\": \"1988-11-02T00:00:00.000Z\",\n        \"GENDER\": \"Women\",\n        \"SMS\": \"3375599887766\"\n      }\n    }\n  ],\n  \"count\": 17655\n}"
+								},
+								{
+									"id": "1a8da4ff-35c2-47e6-84c4-497fe0a4b3f1",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts"
+											],
+											"query": [
+												{
+													"key": "modifiedSince",
+													"value": "veniam elit in"
+												},
+												{
+													"key": "limit",
+													"value": "50"
+												},
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "sort",
+													"value": "desc"
+												}
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "2a641049-a416-41dc-96a6-fc1fe57100bf",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts"
+											],
+											"query": [
+												{
+													"key": "modifiedSince",
+													"value": "veniam elit in"
+												},
+												{
+													"key": "limit",
+													"value": "50"
+												},
+												{
+													"key": "offset",
+													"value": "0"
+												},
+												{
+													"key": "sort",
+													"value": "desc"
+												}
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a contact from a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "e0ede12d-751e-46d8-b71a-c6a6a45e1797",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData.contacts)",
+											"",
+											"",
+											"",
+											"//To test that the response body is in a valid JSON format",
+											"",
+											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
+											"  pm.response.to.be.json;",
+											"});",
+											"",
+											"//To test that the Contacts object contains success and failure properties",
+											"pm.test(\"Contacts object contains success and failure properties\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData.contacts).to.be.an('object');",
+											"    pm.expect(responseData.contacts).to.have.property('success');",
+											"    pm.expect(responseData.contacts).to.have.property('failure');",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "e172fcf5-d7c1-4f82-883f-af72227a63d1",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"{{contactEmail}}\"\n  ]\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId",
+										"contacts",
+										"remove"
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "b6a65814-bc22-4afe-858d-013d65020c62",
+									"name": "All contacts have been removed successfully from the list with details of failed ones",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"remove"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Created",
+									"code": 201,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"success\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ],\n  \"failure\": [\n    \"david@example.com\"\n  ]\n}"
+								},
+								{
+									"id": "f8455ef8-619c-4444-9995-a3369fc156e0",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"remove"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "ca5a6e14-0e45-45a1-83d2-5f13fd6b1aa4",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "POST",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId",
+												"contacts",
+												"remove"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Get a list's details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "2295bbeb-1f78-4687-aa9f-cdf26c3f2bd0",
+										"exec": [
+											"//To extract data from the responce body",
+											"var jsonData = pm.response.json();",
+											"console.log(jsonData)",
+											"",
+											"//To assert some of the field returned in the response body",
+											"pm.test(\"Response has the required fields\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.be.an('object');",
+											"    pm.expect(responseData.name).to.exist;",
+											"    pm.expect(responseData.id).to.exist;",
+											"    pm.expect(responseData.totalBlacklisted).to.exist;",
+											"});",
+											"",
+											"//To assert the value of access-control-allow-methods in the header is PUT, POST, GET, DELETE, PATCH, OPTIONS",
+											"pm.test(\"Response access-control-allow-methods is PUT, POST, GET, DELETE, PATCH, OPTIONS\", function () {",
+											"  pm.expect(pm.response.headers.get(\"access-control-allow-methods\")).to.include(\"PUT, POST, GET, DELETE, PATCH, OPTIONS\");",
+											"});",
+											"",
+											"//To test that the response body does not contain any sensitive information",
+											"pm.test(\"Ensure response does not contain sensitive information\", function () {",
+											"    const responseData = pm.response.json();",
+											"    ",
+											"    pm.expect(responseData).to.not.have.property('password');",
+											"    pm.expect(responseData).to.not.have.property('debitCardNumber');",
+											"    pm.expect(responseData).to.not.have.property('nationalIdentificationNumber');",
+											"})"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "64ef51ca-e856-4e4c-9f06-2511c1f7f113",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId"
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "356b6e90-c37d-43bc-8dd5-fd4de7ae2633",
+									"name": "List informations",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"id\": 12,\n  \"name\": \"Newsletter_Weekly\",\n  \"totalSubscribers\": 6533,\n  \"totalBlacklisted\": 63,\n  \"uniqueSubscribers\": 6596,\n  \"folderId\": 1,\n  \"createdAt\": \"2016-02-26T11:56:08.000Z\",\n  \"campaignStats\": [\n    {\n      \"campaignId\": 15,\n      \"stats\": {\n        \"uniqueClicks\": 701,\n        \"clickers\": 789,\n        \"complaints\": 0,\n        \"delivered\": 6632,\n        \"sent\": 6645,\n        \"softBounces\": 34,\n        \"hardBounces\": 4,\n        \"uniqueViews\": 3442,\n        \"unsubscriptions\": 4,\n        \"viewed\": 4322,\n        \"deferred\": 0\n      }\n    },\n    {\n      \"campaignId\": 45,\n      \"stats\": {\n        \"uniqueClicks\": 654,\n        \"clickers\": 788,\n        \"complaints\": 1,\n        \"delivered\": 4078,\n        \"sent\": 4334,\n        \"softBounces\": 18,\n        \"hardBounces\": 2,\n        \"uniqueViews\": 987,\n        \"unsubscriptions\": 4,\n        \"viewed\": 1555,\n        \"deferred\": 0\n      }\n    }\n  ],\n  \"dynamicList\": false\n}"
+								},
+								{
+									"id": "1948723f-6818-4180-a9d5-6a53ecb4dfb8",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "df70a1d3-0073-487e-966a-4e3aaf295f9f",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "GET",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Update a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "98fc30fc-e7fe-46cc-9f85-0c9156fab279",
+										"exec": [
+											"//Assert the response status code",
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"});",
+											"",
+											"//Test that the value of Server in the response header is cloudflare",
+											"pm.test(\"Response Server is cloudflare\", function () {",
+											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "16c3f6ea-18a0-4f32-9b72-9cabbbfacd85",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"name\": \"{{$randomFullName}}\"\n  //\"folderId\": {{folderId}}\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId"
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "94a756ba-b800-4dd8-a569-488454c678a1",
+									"name": "List updated",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": ""
+								},
+								{
+									"id": "ef2b1e65-909f-440f-b396-efa91fc57221",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "0696c387-e101-49a7-9897-79f8976a4823",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						},
+						{
+							"name": "Delete a list",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"id": "1cd457fc-1e5a-4562-8e9e-2b0678a468c3",
+										"exec": [
+											"//Assert the response status code",
+											"pm.test(\"Status code is 204\", function () {",
+											"    pm.response.to.have.status(204);",
+											"});",
+											"",
+											"",
+											"pm.test(\"Successful PUT request\", function () {",
+											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
+											"});",
+											"",
+											"//Test that the value of Server in the response header is cloudflare",
+											"pm.test(\"Response Server is cloudflare\", function () {",
+											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
+											"});"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"id": "966271dd-d69b-4abe-9e15-7ce9cb528ab4",
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"auth": {
+									"type": "apikey",
+									"apikey": {
+										"value": "{{api-key}}",
+										"key": "api-key"
+									}
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/contacts/lists/:listId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"contacts",
+										"lists",
+										":listId"
+									],
+									"variable": [
+										{
+											"key": "listId",
+											"value": "{{listId}}",
+											"description": "(Required) Id of the list"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"id": "28e0d2b1-0e1e-4eee-b0b8-ddd4b680c255",
+									"name": "List deleted",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "No Content",
+									"code": 204,
+									"_postman_previewlanguage": "text",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": ""
+								},
+								{
+									"id": "7d381d26-4eaa-4ee2-97c4-88b9704714f7",
+									"name": "bad request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Bad Request",
+									"code": 400,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								},
+								{
+									"id": "35318af1-2bb4-4a22-8523-b2cf05e3c671",
+									"name": "List ID not found",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [
+											{
+												"description": "Added as a part of security scheme: apikey",
+												"key": "api-key",
+												"value": "<API Key>"
+											}
+										],
+										"url": {
+											"raw": "{{baseUrl}}/contacts/lists/:listId",
+											"host": [
+												"{{baseUrl}}"
+											],
+											"path": [
+												"contacts",
+												"lists",
+												":listId"
+											],
+											"variable": [
+												{
+													"key": "listId",
+													"value": "13396752",
+													"description": "(Required) Id of the list"
+												}
+											]
+										}
+									},
+									"status": "Not Found",
+									"code": 404,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										}
+									],
+									"cookie": [],
+									"responseTime": null,
+									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
+								}
+							]
+						}
+					],
+					"id": "ea67ca16-cf1e-4e6b-b0b9-bb628aebe25c"
+				},
+				{
 					"name": "Folders",
 					"item": [
 						{
@@ -9449,1800 +11240,6 @@
 						}
 					],
 					"id": "0b3bc94e-1ab6-4000-860d-e835ecaabb97"
-				},
-				{
-					"name": "Lists",
-					"item": [
-						{
-							"name": "Create a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "0a73f83d-ef06-439b-8a6e-ddf7cb995cce",
-										"exec": [
-											"//To assert that response status code is 201",
-											"pm.test('Response status code is 201', function () {",
-											"    pm.expect(pm.response.code).to.equal(201);",
-											"})",
-											"",
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.id)",
-											"",
-											"//To assert that response body contains a required field(id)",
-											"pm.test('Response has the required field - id', function () {",
-											"    const responseData = pm.response.json();",
-											"    pm.expect(responseData).to.be.an('object');",
-											"    pm.expect(responseData.id).to.exist;",
-											"})",
-											"",
-											"//To assert that the response body has content",
-											"pm.test('Response body is not empty', function () {",
-											"    pm.expect(pm.response.json()).to.not.be.empty;",
-											"})",
-											"",
-											"",
-											"//Set listId Value",
-											"pm.test(\"Set listId Value\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.environment.set(\"listId\", jsonData.id);    ",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "7911a168-1b2d-4cf2-b49b-50fa6c4ca12e",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"folderId\": 1,\n  \"name\": \"{{$randomFirstName}}\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": "{{baseUrl}}/contacts/lists"
-							},
-							"response": [
-								{
-									"id": "aaae8855-3db1-4fb5-8385-b70178f83a49",
-									"name": "successfully created",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/contacts/lists"
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"id\": 5\n}"
-								},
-								{
-									"id": "686d6f75-b1e7-4cbe-bca1-29d3255e9b81",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"folderId\": 2,\n  \"name\": \"Magento Customer - ES\"\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": "{{baseUrl}}/contacts/lists"
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Get all the lists",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "492305fd-5732-4c17-b5ce-35da759fdaa4",
-										"exec": [
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.lists) ",
-											"",
-											"//To test that the folders array is not empty",
-											"pm.test('Response contains lists array with at least one element', function () {",
-											"    const responseData = pm.response.json();",
-											"    pm.expect(responseData.lists).to.be.an('array').that.is.not.empty;",
-											"})",
-											"",
-											"",
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.count) ",
-											"",
-											"//To test for the value of count",
-											"pm.test('Count is a positive integer', function () {",
-											"    const responseData = pm.response.json();",
-											"    pm.expect(responseData.count).to.be.a('number');",
-											"    pm.expect(responseData.count).to.be.at.least(0);",
-											"})"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "6c39126a-c7e4-4187-b369-02d187eca61f",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists"
-									],
-									"query": [
-										{
-											"key": "limit",
-											"value": "10",
-											"description": "Number of documents per page"
-										},
-										{
-											"key": "offset",
-											"value": "0",
-											"description": "Index of the first document of the page"
-										},
-										{
-											"key": "sort",
-											"value": "desc",
-											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "5125397e-1916-41c7-a036-b5515febc73e",
-									"name": "Lists informations",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists"
-											],
-											"query": [
-												{
-													"key": "limit",
-													"value": "10"
-												},
-												{
-													"key": "offset",
-													"value": "0"
-												},
-												{
-													"key": "sort",
-													"value": "desc"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"lists\": [\n    {\n      \"id\": 53,\n      \"name\": \"Spanish_Speakers\",\n      \"totalSubscribers\": 5432,\n      \"totalBlacklisted\": 65,\n      \"uniqueSubscribers\": 5497,\n      \"folderId\": 1\n    },\n    {\n      \"id\": 50,\n      \"name\": \"Other\",\n      \"totalSubscribers\": 10976,\n      \"totalBlacklisted\": 765,\n      \"uniqueSubscribers\": 11741,\n      \"folderId\": 2\n    }\n  ],\n  \"count\": 2\n}"
-								},
-								{
-									"id": "11cdfda3-87f7-4e4e-8e39-fa6d362d53ab",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists?limit=10&offset=0&sort=desc",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists"
-											],
-											"query": [
-												{
-													"key": "limit",
-													"value": "10"
-												},
-												{
-													"key": "offset",
-													"value": "0"
-												},
-												{
-													"key": "sort",
-													"value": "desc"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Add existing contacts to a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "ce17956e-db32-49af-8de5-11dacd5bf772",
-										"exec": [
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts)",
-											"",
-											"",
-											"",
-											"//To test that the response body is in a valid JSON format",
-											"",
-											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
-											"  pm.response.to.be.json;",
-											"});",
-											"",
-											"//To test that the Contacts object contains success and failure properties",
-											"pm.test(\"Contacts object contains success and failure properties\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.contacts).to.be.an('object');",
-											"    pm.expect(responseData.contacts).to.have.property('success');",
-											"    pm.expect(responseData.contacts).to.have.property('failure');",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "a9a5e37e-d947-4243-b406-05ebc263ac16",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"bettie.streich@yahoo.com\",\n    \"velva60@yahoo.com\"\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId",
-										"contacts",
-										"add"
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "0d0e5599-29b4-457f-9572-4ec3fa6a8051",
-									"name": "All contacts have been added successfully to the list with details of failed ones",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"add"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"success\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ],\n  \"failure\": [\n    \"david@example.com\"\n  ]\n}"
-								},
-								{
-									"id": "ff6e4ffd-1398-41ae-8791-a1c1111de907",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"add"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "08d26f9b-8a55-4e95-942b-42ac6b399bc8",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/add",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"add"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Get contacts in a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "ed90341c-ab1d-4cc0-a25f-4c36267fbdd7",
-										"exec": [
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts[1].email)",
-											"",
-											"//set contactEmail value",
-											"pm.test(\"Set contactEmail Value\", function () {",
-											"    var jsonData = pm.response.json();",
-											"    pm.environment.set(\"contactEmail\", jsonData.contacts[1].email);    ",
-											"});",
-											"",
-											"",
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts[1].listIds)",
-											"",
-											"//To test for the value of listIds",
-											"pm.test(\"Value of listIds\", function () {",
-											"  var jsonData = pm.response.json();",
-											"  pm.expect(jsonData.contacts[1].listIds).to.include(11);",
-											"});",
-											"",
-											""
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "04778e9b-d3d9-4d40-b923-de7ff95e3994",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId",
-										"contacts"
-									],
-									"query": [
-										{
-											"key": "modifiedSince",
-											"value": "veniam elit in",
-											"description": "Filter (urlencoded) the contacts modified after a given UTC date-time (YYYY-MM-DDTHH:mm:ss.SSSZ). **Prefer to pass your timezone in date-time format for accurate result.**\n",
-											"disabled": true
-										},
-										{
-											"key": "limit",
-											"value": "50",
-											"description": "Number of documents per page",
-											"disabled": true
-										},
-										{
-											"key": "offset",
-											"value": "0",
-											"description": "Index of the first document of the page",
-											"disabled": true
-										},
-										{
-											"key": "sort",
-											"value": "desc",
-											"description": "Sort the results in the ascending/descending order of record creation. Default order is **descending** if `sort` is not passed",
-											"disabled": true
-										}
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "8a8b0c86-423d-45d5-9baa-df3a4a7618de",
-									"name": "Contact informations",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts"
-											],
-											"query": [
-												{
-													"key": "modifiedSince",
-													"value": "veniam elit in"
-												},
-												{
-													"key": "limit",
-													"value": "50"
-												},
-												{
-													"key": "offset",
-													"value": "0"
-												},
-												{
-													"key": "sort",
-													"value": "desc"
-												}
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"contacts\": [\n    {\n      \"email\": \"alex.pain@example.com\",\n      \"id\": 45,\n      \"emailBlacklisted\": false,\n      \"smsBlacklisted\": true,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12,\n        9,\n        20\n      ],\n      \"listUnsubscribed\": [\n        1,\n        2\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Pain\",\n        \"FIRSTNAME\": \"Alex\",\n        \"DOB\": \"2010-12-31T00:00:00.000Z\",\n        \"GENDER\": \"Kid\"\n      }\n    },\n    {\n      \"email\": \"john.smith@example.com\",\n      \"id\": 32,\n      \"emailBlacklisted\": true,\n      \"smsBlacklisted\": false,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12\n      ],\n      \"listUnsubscribed\": [\n        1\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Smith\",\n        \"FIRSTNAME\": \"John\",\n        \"DOB\": \"1986-06-21T00:00:00.000Z\",\n        \"GENDER\": \"Men\"\n      }\n    },\n    {\n      \"email\": \"helen.rose@example.com\",\n      \"id\": 65,\n      \"emailBlacklisted\": true,\n      \"smsBlacklisted\": false,\n      \"createdAt\": \"2017-05-12T12:30:00.000Z\",\n      \"modifiedAt\": \"2017-05-12T12:30:00.000Z\",\n      \"listIds\": [\n        12,\n        9,\n        20\n      ],\n      \"listUnsubscribed\": [\n        1\n      ],\n      \"attributes\": {\n        \"LASTNAME\": \"Rose\",\n        \"FIRSTNAME\": \"Helen\",\n        \"DOB\": \"1988-11-02T00:00:00.000Z\",\n        \"GENDER\": \"Women\",\n        \"SMS\": \"3375599887766\"\n      }\n    }\n  ],\n  \"count\": 17655\n}"
-								},
-								{
-									"id": "1a8da4ff-35c2-47e6-84c4-497fe0a4b3f1",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts"
-											],
-											"query": [
-												{
-													"key": "modifiedSince",
-													"value": "veniam elit in"
-												},
-												{
-													"key": "limit",
-													"value": "50"
-												},
-												{
-													"key": "offset",
-													"value": "0"
-												},
-												{
-													"key": "sort",
-													"value": "desc"
-												}
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "2a641049-a416-41dc-96a6-fc1fe57100bf",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts?modifiedSince=veniam elit in&limit=50&offset=0&sort=desc",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts"
-											],
-											"query": [
-												{
-													"key": "modifiedSince",
-													"value": "veniam elit in"
-												},
-												{
-													"key": "limit",
-													"value": "50"
-												},
-												{
-													"key": "offset",
-													"value": "0"
-												},
-												{
-													"key": "sort",
-													"value": "desc"
-												}
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Delete a contact from a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "e0ede12d-751e-46d8-b71a-c6a6a45e1797",
-										"exec": [
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData.contacts)",
-											"",
-											"",
-											"",
-											"//To test that the response body is in a valid JSON format",
-											"",
-											"pm.test(\"Ensure that the response body is in valid JSON format\", function () {",
-											"  pm.response.to.be.json;",
-											"});",
-											"",
-											"//To test that the Contacts object contains success and failure properties",
-											"pm.test(\"Contacts object contains success and failure properties\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData.contacts).to.be.an('object');",
-											"    pm.expect(responseData.contacts).to.have.property('success');",
-											"    pm.expect(responseData.contacts).to.have.property('failure');",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "e172fcf5-d7c1-4f82-883f-af72227a63d1",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "POST",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"emails\": [\n    \"{{email}}\",\n    \"{{contactEmail}}\"\n  ]\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId",
-										"contacts",
-										"remove"
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "b6a65814-bc22-4afe-858d-013d65020c62",
-									"name": "All contacts have been removed successfully from the list with details of failed ones",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"remove"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Created",
-									"code": 201,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"success\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ],\n  \"failure\": [\n    \"david@example.com\"\n  ]\n}"
-								},
-								{
-									"id": "f8455ef8-619c-4444-9995-a3369fc156e0",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"remove"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "ca5a6e14-0e45-45a1-83d2-5f13fd6b1aa4",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "POST",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"emails\": [\n    \"jeff32@example.com\",\n    \"jim56@example.com\"\n  ]\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId/contacts/remove",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId",
-												"contacts",
-												"remove"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Get a list's details",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "2295bbeb-1f78-4687-aa9f-cdf26c3f2bd0",
-										"exec": [
-											"//To extract data from the responce body",
-											"var jsonData = pm.response.json();",
-											"console.log(jsonData)",
-											"",
-											"//To assert some of the field returned in the response body",
-											"pm.test(\"Response has the required fields\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData).to.be.an('object');",
-											"    pm.expect(responseData.name).to.exist;",
-											"    pm.expect(responseData.id).to.exist;",
-											"    pm.expect(responseData.totalBlacklisted).to.exist;",
-											"});",
-											"",
-											"//To assert the value of access-control-allow-methods in the header is PUT, POST, GET, DELETE, PATCH, OPTIONS",
-											"pm.test(\"Response access-control-allow-methods is PUT, POST, GET, DELETE, PATCH, OPTIONS\", function () {",
-											"  pm.expect(pm.response.headers.get(\"access-control-allow-methods\")).to.include(\"PUT, POST, GET, DELETE, PATCH, OPTIONS\");",
-											"});",
-											"",
-											"//To test that the response body does not contain any sensitive information",
-											"pm.test(\"Ensure response does not contain sensitive information\", function () {",
-											"    const responseData = pm.response.json();",
-											"    ",
-											"    pm.expect(responseData).to.not.have.property('password');",
-											"    pm.expect(responseData).to.not.have.property('debitCardNumber');",
-											"    pm.expect(responseData).to.not.have.property('nationalIdentificationNumber');",
-											"})"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "64ef51ca-e856-4e4c-9f06-2511c1f7f113",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "GET",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId"
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "356b6e90-c37d-43bc-8dd5-fd4de7ae2633",
-									"name": "List informations",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "OK",
-									"code": 200,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"id\": 12,\n  \"name\": \"Newsletter_Weekly\",\n  \"totalSubscribers\": 6533,\n  \"totalBlacklisted\": 63,\n  \"uniqueSubscribers\": 6596,\n  \"folderId\": 1,\n  \"createdAt\": \"2016-02-26T11:56:08.000Z\",\n  \"campaignStats\": [\n    {\n      \"campaignId\": 15,\n      \"stats\": {\n        \"uniqueClicks\": 701,\n        \"clickers\": 789,\n        \"complaints\": 0,\n        \"delivered\": 6632,\n        \"sent\": 6645,\n        \"softBounces\": 34,\n        \"hardBounces\": 4,\n        \"uniqueViews\": 3442,\n        \"unsubscriptions\": 4,\n        \"viewed\": 4322,\n        \"deferred\": 0\n      }\n    },\n    {\n      \"campaignId\": 45,\n      \"stats\": {\n        \"uniqueClicks\": 654,\n        \"clickers\": 788,\n        \"complaints\": 1,\n        \"delivered\": 4078,\n        \"sent\": 4334,\n        \"softBounces\": 18,\n        \"hardBounces\": 2,\n        \"uniqueViews\": 987,\n        \"unsubscriptions\": 4,\n        \"viewed\": 1555,\n        \"deferred\": 0\n      }\n    }\n  ],\n  \"dynamicList\": false\n}"
-								},
-								{
-									"id": "1948723f-6818-4180-a9d5-6a53ecb4dfb8",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "df70a1d3-0073-487e-966a-4e3aaf295f9f",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "GET",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Update a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "98fc30fc-e7fe-46cc-9f85-0c9156fab279",
-										"exec": [
-											"//Assert the response status code",
-											"pm.test(\"Status code is 204\", function () {",
-											"    pm.response.to.have.status(204);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Successful PUT request\", function () {",
-											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
-											"});",
-											"",
-											"//Test that the value of Server in the response header is cloudflare",
-											"pm.test(\"Response Server is cloudflare\", function () {",
-											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "16c3f6ea-18a0-4f32-9b72-9cabbbfacd85",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "PUT",
-								"header": [
-									{
-										"key": "Content-Type",
-										"value": "application/json"
-									},
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n  \"name\": \"{{$randomFullName}}\"\n  //\"folderId\": {{folderId}}\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId"
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "94a756ba-b800-4dd8-a569-488454c678a1",
-									"name": "List updated",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": ""
-								},
-								{
-									"id": "ef2b1e65-909f-440f-b396-efa91fc57221",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "0696c387-e101-49a7-9897-79f8976a4823",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "PUT",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"body": {
-											"mode": "raw",
-											"raw": "{\n  \"name\": \"Magento Customer - ES\",\n  \"folderId\": 2\n}",
-											"options": {
-												"raw": {
-													"language": "json"
-												}
-											}
-										},
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						},
-						{
-							"name": "Delete a list",
-							"event": [
-								{
-									"listen": "test",
-									"script": {
-										"id": "1cd457fc-1e5a-4562-8e9e-2b0678a468c3",
-										"exec": [
-											"//Assert the response status code",
-											"pm.test(\"Status code is 204\", function () {",
-											"    pm.response.to.have.status(204);",
-											"});",
-											"",
-											"",
-											"pm.test(\"Successful PUT request\", function () {",
-											"    pm.expect(pm.response.code).to.be.oneOf([204, 200]);",
-											"});",
-											"",
-											"//Test that the value of Server in the response header is cloudflare",
-											"pm.test(\"Response Server is cloudflare\", function () {",
-											"    pm.expect(pm.response.headers.get(\"Server\")).to.include(\"cloudflare\");",
-											"});"
-										],
-										"type": "text/javascript"
-									}
-								}
-							],
-							"id": "966271dd-d69b-4abe-9e15-7ce9cb528ab4",
-							"protocolProfileBehavior": {
-								"disableBodyPruning": true
-							},
-							"request": {
-								"auth": {
-									"type": "apikey",
-									"apikey": {
-										"value": "{{api-key}}",
-										"key": "api-key"
-									}
-								},
-								"method": "DELETE",
-								"header": [
-									{
-										"key": "Accept",
-										"value": "application/json"
-									}
-								],
-								"url": {
-									"raw": "{{baseUrl}}/contacts/lists/:listId",
-									"host": [
-										"{{baseUrl}}"
-									],
-									"path": [
-										"contacts",
-										"lists",
-										":listId"
-									],
-									"variable": [
-										{
-											"key": "listId",
-											"value": "{{listId}}",
-											"description": "(Required) Id of the list"
-										}
-									]
-								}
-							},
-							"response": [
-								{
-									"id": "28e0d2b1-0e1e-4eee-b0b8-ddd4b680c255",
-									"name": "List deleted",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "No Content",
-									"code": 204,
-									"_postman_previewlanguage": "text",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "text/plain"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": ""
-								},
-								{
-									"id": "7d381d26-4eaa-4ee2-97c4-88b9704714f7",
-									"name": "bad request",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Bad Request",
-									"code": 400,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								},
-								{
-									"id": "35318af1-2bb4-4a22-8523-b2cf05e3c671",
-									"name": "List ID not found",
-									"originalRequest": {
-										"method": "DELETE",
-										"header": [
-											{
-												"description": "Added as a part of security scheme: apikey",
-												"key": "api-key",
-												"value": "<API Key>"
-											}
-										],
-										"url": {
-											"raw": "{{baseUrl}}/contacts/lists/:listId",
-											"host": [
-												"{{baseUrl}}"
-											],
-											"path": [
-												"contacts",
-												"lists",
-												":listId"
-											],
-											"variable": [
-												{
-													"key": "listId",
-													"value": "13396752",
-													"description": "(Required) Id of the list"
-												}
-											]
-										}
-									},
-									"status": "Not Found",
-									"code": 404,
-									"_postman_previewlanguage": "json",
-									"header": [
-										{
-											"key": "Content-Type",
-											"value": "application/json"
-										}
-									],
-									"cookie": [],
-									"responseTime": null,
-									"body": "{\n  \"code\": \"method_not_allowed\",\n  \"message\": \"POST Method is not allowed on this path\"\n}"
-								}
-							]
-						}
-					],
-					"id": "ea67ca16-cf1e-4e6b-b0b9-bb628aebe25c"
 				},
 				{
 					"name": "Attributes",
