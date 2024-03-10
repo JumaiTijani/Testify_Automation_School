@@ -1,0 +1,9 @@
+{
+  "name": "company",
+  "attributes": {
+    "domain": "https://example.com",
+    "industry": "Fabric",
+    "owner": "62260474111b1101704a9d85"
+  },
+  "countryCode": 91
+}

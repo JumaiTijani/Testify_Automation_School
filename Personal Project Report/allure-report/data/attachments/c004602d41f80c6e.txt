@@ -1,0 +1,7 @@
+{
+  "emails": [
+    "{{email}}",
+    "bettie.streich@yahoo.com",
+    "velva60@yahoo.com"
+  ]
+}

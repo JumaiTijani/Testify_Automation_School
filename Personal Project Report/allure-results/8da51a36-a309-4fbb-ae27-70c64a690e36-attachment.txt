@@ -1,0 +1,47 @@
+{
+  "name": "Newsletter - May 2024",
+  "sender": {
+    "name": "Hollandia",
+    "email": "newsletter@sharklasers.com"
+    
+  },
+  "tag": "Newsletter",
+ 
+  "htmlUrl": "https://html.domain.com",
+  
+  "scheduledAt": "2025-08-13 16:08:44+02:00",
+  "subject": "Discover the New Collection !",
+  "replyTo": "support@myshop.com",
+  "toField": "{FNAME} {LNAME}",
+  "recipients": {
+    "exclusionListIds": [
+      8,
+      8
+    ],
+    "listIds": [
+      32,
+      32
+    ]
+  },
+  "attachmentUrl": "https://attachment.domain.com",
+  "inlineImageActivation": true,
+  "mirrorActive": true,
+  "footer": "[DEFAULT_FOOTER]",
+  "header": "[DEFAULT_HEADER]",
+  "utmCampaign": "NL_05_2017",
+  "params": {
+    "mollit_b6": {}
+  },
+  
+  "abTesting": true,
+  "subjectA": "Discover the New Collection!",
+  "subjectB": "Want to discover the New Collection?",
+  "splitRule": 50,
+  "winnerCriteria": "open",
+  "winnerDelay": 50,
+  "ipWarmupEnable": true,
+  "initialQuota": 3000,
+  "increaseRate": 70,
+  "unsubscriptionPageId": "62cbb7fabbe85021021aac52",
+  "updateFormId": "6313436b9ad40e23b371d095"
+}

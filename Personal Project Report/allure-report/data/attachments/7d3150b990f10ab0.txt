@@ -1,0 +1,14 @@
+{
+  
+  "fileBody": "NAME;SURNAME;EMAIL\nSmith;John;john.smith@example.com\nRoger;Ellie;ellie36@example.com",
+  
+  "listIds": [
+    2,
+    3
+  ],
+ 
+  "emailBlacklist": false,
+  "smsBlacklist": false,
+  "updateExistingContacts": true,
+  "emptyContactsAttributes": true
+}

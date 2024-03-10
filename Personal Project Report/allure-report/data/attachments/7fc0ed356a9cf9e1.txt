@@ -1,0 +1,14 @@
+{
+  "value": "COUNT[READERS,READERS,<,NOW()]",
+  "enumeration": [
+    {
+      "label": "Women",
+      "value": 1
+    },
+    {
+      "label": "Men",
+      "value": 2
+    }
+  ],
+  "type": "text"
+}

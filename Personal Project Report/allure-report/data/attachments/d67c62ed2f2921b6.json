@@ -1,0 +1,10 @@
+{
+    "Accept": "application/json",
+    "User-Agent": "PostmanRuntime/7.36.3",
+    "Cache-Control": "no-cache",
+    "Postman-Token": "ad3620fb-62ed-4587-b76a-993afc885811",
+    "Host": "api.sendinblue.com",
+    "Accept-Encoding": "gzip, deflate, br",
+    "Connection": "keep-alive",
+    "Cookie": "__cf_bm=gIItnTJQejtLZSqJM3ygtI4yUmprielQ1A5qzjCAyfI-1710054859-1.0.1.1-sIR.frx5hixoR_iYBVCIgp2EsXOg7CX31SDI78pcMfPijcY6VDPLb0V2S4llmDwAKpWBeGjXqOHWg4JLQfAnBw"
+}
