@@ -1117,7 +1117,7 @@
 								"auth": {
 									"type": "apikey",
 									"apikey": {
-										"value": "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",
+										"value": "{{api-key}}",
 										"key": "api-key"
 									}
 								},
