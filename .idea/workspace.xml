@@ -4,24 +4,34 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a78b91c7-b1a4-4b3e-b590-a0a2fd2565f8" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/JavaChallenge.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask10.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask3.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask5.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask6.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask7.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask8.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask9A.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/JavaTask9B.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
+    <list default="true" id="a78b91c7-b1a4-4b3e-b590-a0a2fd2565f8" name="Changes" comment="add file">
+      <change afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/KotlinJavaRuntime.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask11/Automobile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask11/Truck.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask12Package1/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask12Package2/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask13/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask13/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask14/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask14/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask15/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask15/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask16A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask16B/ChildClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask16B/ParentClass.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask17A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask17B.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask18.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19A.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19B/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19B/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19C/ClassA.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19C/ClassB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/JavaTask19D.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/JavaChallenge.iml" beforeDir="false" afterPath="$PROJECT_DIR$/JavaChallenge.iml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +41,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Kotlin Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="origin/main" />
+  </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="LOCAL">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="SWAP_SIDES_IN_COMPARE_BRANCHES" value="true" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 8
@@ -51,7 +80,14 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ChildClass.executor": "Run",
+    "Application.ClassB.executor": "Run",
     "Application.JavaTask10.executor": "Run",
+    "Application.JavaTask14.ClassB.executor": "Run",
+    "Application.JavaTask18.executor": "Run",
+    "Application.JavaTask19B.ClassB.executor": "Run",
+    "Application.JavaTask19C.ClassB.executor": "Run",
+    "Application.JavaTask19D.executor": "Run",
     "Application.JavaTask2.executor": "Run",
     "Application.JavaTask3.executor": "Run",
     "Application.JavaTask4.executor": "Run",
@@ -62,10 +98,13 @@
     "Application.JavaTask9A.executor": "Run",
     "Application.JavaTask9B.executor": "Run",
     "Application.Main.executor": "Run",
+    "Application.Truck.executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "settings.editor.selected.configurable": "project.propVCSSupport.CommitDialog"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -73,37 +112,55 @@
       <recent name="string" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.JavaTask10">
-    <configuration name="JavaTask10" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaTask10" />
+  <component name="RunManager" selected="Application.JavaTask19D">
+    <configuration name="ChildClass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaTask16B.ChildClass" />
+      <module name="JavaChallenge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JavaTask16B.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JavaTask18" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaTask18" />
       <module name="JavaChallenge" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JavaTask7" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaTask7" />
+    <configuration name="JavaTask19B.ClassB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaTask19B.ClassB" />
       <module name="JavaChallenge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JavaTask19B.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JavaTask8" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaTask8" />
+    <configuration name="JavaTask19C.ClassB" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaTask19C.ClassB" />
       <module name="JavaChallenge" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="JavaTask19C.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JavaTask9A" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaTask9A" />
-      <module name="JavaChallenge" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="JavaTask9B" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="JavaTask9B" />
+    <configuration name="JavaTask19D" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="JavaTask19D" />
       <module name="JavaChallenge" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -111,11 +168,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.JavaTask10" />
-        <item itemvalue="Application.JavaTask9B" />
-        <item itemvalue="Application.JavaTask9A" />
-        <item itemvalue="Application.JavaTask8" />
-        <item itemvalue="Application.JavaTask7" />
+        <item itemvalue="Application.JavaTask19D" />
+        <item itemvalue="Application.JavaTask19B.ClassB" />
+        <item itemvalue="Application.JavaTask19C.ClassB" />
+        <item itemvalue="Application.JavaTask18" />
+        <item itemvalue="Application.ChildClass" />
       </list>
     </recent_temporary>
   </component>
@@ -135,9 +192,44 @@
       <option name="presentableId" value="Default" />
       <updated>1710352512211</updated>
     </task>
+    <task id="LOCAL-00001" summary="add file">
+      <option name="closed" value="true" />
+      <created>1710460336138</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1710460336138</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+        <entry key="User">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="*" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="TAB_STATES">
       <map>
         <entry key="MAIN">
@@ -147,5 +239,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add file" />
+    <option name="LAST_COMMIT_MESSAGE" value="add file" />
   </component>
 </project>
