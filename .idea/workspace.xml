@@ -4,29 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="585a64e7-6c3d-42ef-abce-e6d2dd871d0b" name="Changes" comment="add task">
-      <change afterPath="$PROJECT_DIR$/src/chromedriver-mac-arm64/LICENSE.chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/chromedriver-mac-arm64/chromedriver" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edgedriver_mac64_m1/Driver_Notes/EULA" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edgedriver_mac64_m1/Driver_Notes/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edgedriver_mac64_m1/Driver_Notes/credits.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/edgedriver_mac64_m1/msedgedriver" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chromedriver-mac-x64/LICENSE.chromedriver" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/chromedriver-mac-x64/chromedriver" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/edgedriver_mac64_m1 (1)/Driver_Notes/EULA" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/edgedriver_mac64_m1 (1)/Driver_Notes/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/edgedriver_mac64_m1 (1)/Driver_Notes/credits.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/edgedriver_mac64_m1 (1)/msedgedriver" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task2/Google.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task2/Google.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task2/Konga.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task2/Konga.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task2/Pinterest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task2/Pinterest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task4.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task4.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task5.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task5.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task6.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task6.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/org/example/Task7.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/org/example/Task7.java" afterDir="false" />
-    </list>
+    <list default="true" id="585a64e7-6c3d-42ef-abce-e6d2dd871d0b" name="Changes" comment="add task" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -171,7 +149,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712282784725</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="add task">
+      <option name="closed" value="true" />
+      <created>1712314824978</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1712314824979</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -184,12 +170,12 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/example/Task2/Google.java</url>
-          <line>5</line>
+          <line>7</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/org/example/Task7.java</url>
-          <line>21</line>
+          <line>25</line>
           <option name="timeStamp" value="2" />
         </line-breakpoint>
       </breakpoints>
