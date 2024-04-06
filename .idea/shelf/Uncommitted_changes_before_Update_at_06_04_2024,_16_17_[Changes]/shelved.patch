@@ -1,0 +1,1024 @@
+Index: src/JavaTask18.java
+===================================================================
+diff --git a/src/JavaTask18.java b/src/JavaTask18.java
+deleted file mode 100644
+--- a/src/JavaTask18.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,28 +0,0 @@
+-//Write a code that asks the user for age and that accepts the Integer value.
+-//Handle the error that is encountered when the users try's to enter a name instead of age
+-
+-
+-
+-
+-import java.util.Scanner;
+-
+-public class JavaTask18 {
+-    public static void main(String[] args) {
+-        Scanner userInput = new Scanner(System.in);
+-        int age;
+-
+-        while (true) {
+-            try {
+-                System.out.print("Please enter your age: ");
+-                String input = userInput.nextLine();
+-                age = Integer.parseInt(input);
+-                break;
+-            } catch (Exception invalidInput) {
+-                System.out.println("Invalid input: Please enter your age.");
+-                System.out.println(invalidInput);
+-            }
+-        }
+-
+-        System.out.println("You are " + age + "years old");
+-    }
+-}
+Index: src/JavaTask2.java
+===================================================================
+diff --git a/src/JavaTask2.java b/src/JavaTask2.java
+deleted file mode 100644
+--- a/src/JavaTask2.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,26 +0,0 @@
+-//Print out all 6 variables that are all different data types on your console
+-
+-
+-
+-public class JavaTask2 {
+-    public static void main(String[] args) {
+-        byte pages = 120;
+-        System.out.println(pages);
+-
+-        short shareHolders = 32700;
+-        System.out.println(shareHolders);
+-
+-        int stockValue = 2143744446;
+-        System.out.println(stockValue);
+-
+-        double hectare = 9038741.32;
+-        System.out.println(hectare);
+-
+-        char option = 'y';
+-        System.out.println(option);
+-
+-        boolean isAvailable = true;
+-        System.out.println(isAvailable);
+-
+-    }
+-}
+Index: src/JavaTask6.java
+===================================================================
+diff --git a/src/JavaTask6.java b/src/JavaTask6.java
+deleted file mode 100644
+--- a/src/JavaTask6.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,16 +0,0 @@
+-//Write a code to reverse the string DEMOCRACY and get the word COME out of it.
+-
+-
+-public class JavaTask6 {
+-    public static void main(String[] args) {
+-        String word = "DEMOCRACY";
+-        StringBuilder reversedWord = new StringBuilder();
+-
+-        for (int i = 0; i < word.length(); i++) {
+-            reversedWord.insert(0, word.charAt(i));
+-
+-        }
+-
+-        System.out.println(reversedWord.substring(4,8));
+-    }
+-}
+Index: src/JavaTask14/ClassB.java
+===================================================================
+diff --git a/src/JavaTask14/ClassB.java b/src/JavaTask14/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask14/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,30 +0,0 @@
+-//You are to create 3 variables for a "square shape" class which will be "class A",
+-//shapeSides (number of sides of the shape), shape length and shape breadth.
+-//From your knowledge of encapsulation, create getters and setters for length and breadth variables and
+-//create only a getter for shape side(this is because we don't want anyone setting the sides of a square.
+-//the sides of the square must and always will be 4).
+-//Create another class "B", set the values of length and breadth.
+-// Get the value of the length and breadth and calculate the area.
+-// print out your final calculation like this.
+-// "The area of a square of length: {put the value of the length} and breadth {put the value of the breadth} is {put the value of the area u calculated}"
+-
+-
+-
+-package JavaTask14;
+-
+-public class ClassB {
+-    public static void main(String[] args) {
+-        ClassA area = new ClassA();
+-        int shapeSides = area.getSides();
+-
+-        area.setLength(12);
+-        int shapeLength = area.getLength();
+-
+-        area.setBreadth(10);
+-        int shapeBreath = area.getBreadth();
+-
+-        int shapeArea = shapeLength * shapeBreath;
+-
+-        System.out.println("The area of a square of length:" + shapeLength + " and breadth:" + shapeBreath + " is " + shapeArea);
+-    }
+-}
+Index: src/JavaTask19D.java
+===================================================================
+diff --git a/src/JavaTask19D.java b/src/JavaTask19D.java
+deleted file mode 100644
+--- a/src/JavaTask19D.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,16 +0,0 @@
+-//THIS https://i.imgur.com/aRkRDPa.png You have a class with a method printName.
+-//write a code in the printName method that will print the instance member which is "Delta" and
+-//whatever name the user enter when invoking the method
+-
+-public class JavaTask19D {
+-    String name ="Delta";
+-
+-    public static void main(String[] args) {
+-        JavaTask19D name = new JavaTask19D();
+-        name.printName("Anthony");
+-    }
+-
+-    public void printName(String name) {
+-        System.out.println("Instance member: " + this.name + " and User input: " + name );
+-    }
+-}
+Index: src/JavaTask3.java
+===================================================================
+diff --git a/src/JavaTask3.java b/src/JavaTask3.java
+deleted file mode 100644
+--- a/src/JavaTask3.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,19 +0,0 @@
+-//Create a variable and store your age in it.
+-// concatenate your age with a string and print it out on the console using the two methods of concatenation you were taught
+-
+-
+-public class JavaTask3 {
+-    public static void main(String[] args) {
+-
+-        int age = 24;
+-        System.out.println("my age is: " + age);
+-
+-        String myAge = "my age is: " + age;
+-        System.out.println(myAge);
+-
+-        String answer = "my age is: ";
+-        System.out.println(myAge.concat(answer));
+-
+-
+-    }
+-}
+Index: src/JavaTask9B.java
+===================================================================
+diff --git a/src/JavaTask9B.java b/src/JavaTask9B.java
+deleted file mode 100644
+--- a/src/JavaTask9B.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,18 +0,0 @@
+-//Write a logic that takes in input from the user.
+-// It keeps printing "try again "until the user enters "testify"
+-
+-
+-import java.util.Scanner;
+-
+-public class JavaTask9B {
+-    public static void main(String[] args) {
+-        Scanner logic = new Scanner(System.in);
+-        String input = "";
+-
+-        while(!input.equalsIgnoreCase("testify")){
+-            System.out.println("try again");
+-            input = logic.nextLine();
+-        }
+-
+-    }
+-}
+Index: src/JavaTask19B/ClassB.java
+===================================================================
+diff --git a/src/JavaTask19B/ClassB.java b/src/JavaTask19B/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask19B/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,12 +0,0 @@
+-//STATIC: I want to use the value of a variable in one class in another class at runtime.
+-//I also want to access the variable without creating an object of its class. Help me implement this
+-
+-
+-package JavaTask19B;
+-
+-public class ClassB {
+-    public static void main(String[] args) {
+-
+-        System.out.println(ClassA.stationery);
+-    }
+-}
+Index: src/JavaTask19B/ClassA.java
+===================================================================
+diff --git a/src/JavaTask19B/ClassA.java b/src/JavaTask19B/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask19B/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,8 +0,0 @@
+-//STATIC: I want to use the value of a variable in one class in another class at runtime.
+-//I also want to access the variable without creating an object of its class. Help me implement this
+-
+-package JavaTask19B;
+-
+-public class ClassA {
+-    static String stationery = "Pen";
+-}
+Index: src/JavaTask19C/ClassA.java
+===================================================================
+diff --git a/src/JavaTask19C/ClassA.java b/src/JavaTask19C/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask19C/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,10 +0,0 @@
+-//SUPER: Class B is extending Class A, Class B has a variable String name = "Anderson"
+-//while Class A has the same variable name and type is an attribute "Ronke".
+-//Print out the value of Class A and class B in your main method using the object of only One class.
+-//(Don't create two objects)
+-
+-package JavaTask19C;
+-
+-public class ClassA {
+-    String name = "Anderson";
+-}
+Index: src/JavaTask10.java
+===================================================================
+diff --git a/src/JavaTask10.java b/src/JavaTask10.java
+deleted file mode 100644
+--- a/src/JavaTask10.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,22 +0,0 @@
+-//Create a method that verify that visitors on the slack channel are coming for testify Trainings.
+-// If they write" Testify" then print out a  welcome message if not , the user should be shown rejection message.
+-// after creating this method,then invoke the created method in your main method
+-
+-
+-public class JavaTask10 {
+-
+-    public static void main(String[] args) {
+-        String message = "I'm here for the Testify trainings.";
+-        verifyVisitor(message);
+-    }
+-
+-    public static void verifyVisitor(String message) {
+-        if (message.contains("Testify")) {
+-            System.out.println("Welcome to the Testify");
+-        } else {
+-            System.out.println("Sorry, you can't access this channel.");
+-        }
+-    }
+-
+-
+-}
+\ No newline at end of file
+Index: src/JavaTask11/Truck.java
+===================================================================
+diff --git a/src/JavaTask11/Truck.java b/src/JavaTask11/Truck.java
+deleted file mode 100644
+--- a/src/JavaTask11/Truck.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,13 +0,0 @@
+-//Create a class A, create a method that accepts a String parameter "name" and returns the "name" value.
+-// Create an object of that class in another class  "B" and SOUT the contents from the methods in class A
+-
+-package JavaTask11;
+-
+-public class Truck {
+-    public static void main(String[] args) {
+-        Automobile toyota = new Automobile();
+-        toyota.name = "Tacoma";
+-
+-        toyota.Truck(toyota.name);
+-    }
+-}
+Index: src/JavaTask17B.java
+===================================================================
+diff --git a/src/JavaTask17B.java b/src/JavaTask17B.java
+deleted file mode 100644
+--- a/src/JavaTask17B.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,15 +0,0 @@
+-//All testers in your unit must test that the correct username is entered,
+-//correct password that matches the username and that Login to the homePage or dashboard is successful.
+-//As the test Lead, create an interface that the testers should.
+-
+-public interface JavaTask17B {
+-    //Validate that the username entered is correct
+-    public abstract void validUsername();
+-
+-    //Validate that the password is correct and it matches the username
+-    public abstract void validPassword();
+-
+-    //Validate that Login to the homePage or dashboard is successful
+-    public abstract void loginSuccessful();
+-
+-}
+Index: src/JavaTask15/ClassA.java
+===================================================================
+diff --git a/src/JavaTask15/ClassA.java b/src/JavaTask15/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask15/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,19 +0,0 @@
+-//Create a parent class "A" with 3 methods.
+-//create a child class "B" with 2 methods.
+-//add a print statement in all the 5 methods.
+-//Invoke all 5 methods in a main method in the child class "B"
+-
+-
+-package JavaTask15;
+-
+-public class ClassA {
+-    public void superCar(){
+-        System.out.println("Lamborghini is a supercar");
+-    }
+-    public void model(){
+-        System.out.println("Revuelto is a Lamborghini model");
+-    }
+-    public void horsePower(){
+-        System.out.println("The Lamborghini Revuelto produces 1,001 horse power");
+-    }
+-}
+Index: src/JavaTask8.java
+===================================================================
+diff --git a/src/JavaTask8.java b/src/JavaTask8.java
+deleted file mode 100644
+--- a/src/JavaTask8.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,25 +0,0 @@
+-//Build a Simple interest calculator.
+-//Write a program to ask the user for the necessary field you need in calculating the simple interest and then
+-//communicate the simple interest back to the user in a good sentence
+-
+-
+-import java.util.Scanner;
+-
+-public class JavaTask8 {
+-    public static void main(String[] args) {
+-        Scanner userInput = new Scanner(System.in);
+-        System.out.println("Please enter Principal amount");
+-        int principal = userInput.nextInt();
+-        System.out.println("Please enter interest rate as percentage");
+-        double interestRate = userInput.nextInt();
+-        System.out.println("Please enter time in month");
+-        double time = userInput.nextInt();
+-
+-        double simpleInterestRate = principal * interestRate/100 * time/12;
+-        System.out.println("Given the details you have provided, your interest rate is:" + simpleInterestRate);
+-
+-    }
+-}
+-
+-
+-
+Index: .idea/kotlinc.xml
+===================================================================
+diff --git a/.idea/kotlinc.xml b/.idea/kotlinc.xml
+deleted file mode 100644
+--- a/.idea/kotlinc.xml	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,6 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Kotlin2JvmCompilerArguments">
+-    <option name="jvmTarget" value="1.8" />
+-  </component>
+-</project>
+\ No newline at end of file
+Index: src/JavaTask4.java
+===================================================================
+diff --git a/src/JavaTask4.java b/src/JavaTask4.java
+deleted file mode 100644
+--- a/src/JavaTask4.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,18 +0,0 @@
+-//find the area of a circle with radius of 12.7m.
+-// Print out your result with the unit of measurement which is metres
+-
+-
+-public class JavaTask4 {
+-    public static void main(String[] args) {
+-
+-        double radius = 12.7;
+-        double radiusSquare = radius * radius;
+-        double pie = 3.14;
+-
+-
+-        double areaOfCircle = pie * radiusSquare;
+-
+-        System.out.println(areaOfCircle);
+-
+-    }
+-}
+Index: .idea/libraries/KotlinJavaRuntime.xml
+===================================================================
+diff --git a/.idea/libraries/KotlinJavaRuntime.xml b/.idea/libraries/KotlinJavaRuntime.xml
+deleted file mode 100644
+--- a/.idea/libraries/KotlinJavaRuntime.xml	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,26 +0,0 @@
+-<component name="libraryTable">
+-  <library name="KotlinJavaRuntime" type="repository">
+-    <properties maven-id="org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.9.0" />
+-    <CLASSES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.0/kotlin-stdlib-jdk8-1.9.0.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.9.0/kotlin-stdlib-1.9.0.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.0/kotlin-stdlib-common-1.9.0.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.0/kotlin-stdlib-jdk7-1.9.0.jar!/" />
+-    </CLASSES>
+-    <JAVADOC>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.0/kotlin-stdlib-jdk8-1.9.0-javadoc.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.9.0/kotlin-stdlib-1.9.0-javadoc.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.0/kotlin-stdlib-common-1.9.0-javadoc.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0-javadoc.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.0/kotlin-stdlib-jdk7-1.9.0-javadoc.jar!/" />
+-    </JAVADOC>
+-    <SOURCES>
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk8/1.9.0/kotlin-stdlib-jdk8-1.9.0-sources.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib/1.9.0/kotlin-stdlib-1.9.0-sources.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-common/1.9.0/kotlin-stdlib-common-1.9.0-sources.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/annotations/13.0/annotations-13.0-sources.jar!/" />
+-      <root url="jar://$MAVEN_REPOSITORY$/org/jetbrains/kotlin/kotlin-stdlib-jdk7/1.9.0/kotlin-stdlib-jdk7-1.9.0-sources.jar!/" />
+-    </SOURCES>
+-  </library>
+-</component>
+\ No newline at end of file
+Index: src/JavaTask19C/ClassB.java
+===================================================================
+diff --git a/src/JavaTask19C/ClassB.java b/src/JavaTask19C/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask19C/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,21 +0,0 @@
+-//SUPER: Class B is extending Class A, Class B has a variable String name = "Anderson"
+-//while Class A has the same variable name and type is an attribute "Ronke".
+-//Print out the value of Class A and class B in your main method using the object of only One class.
+-//(Don't create two objects)
+-
+-
+-package JavaTask19C;
+-
+-public class ClassB extends ClassA{
+-    String name = "Ronke";
+-
+-    public static void main(String[] args) {
+-        ClassB object = new ClassB();
+-        object.printName();
+-    }
+-
+-    public void printName(){
+-        System.out.println("My name is: " + super.name);
+-        System.out.println("My name is: " + name);
+-    }
+-}
+Index: src/JavaTask16B/ChildClass.java
+===================================================================
+diff --git a/src/JavaTask16B/ChildClass.java b/src/JavaTask16B/ChildClass.java
+deleted file mode 100644
+--- a/src/JavaTask16B/ChildClass.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,21 +0,0 @@
+-//OVERRIDING: Create two methods in a parent class with arguments.
+-//Write a print statement in the method body,
+-//Override the 2 methods in the child class and write a different print statement in the body of the overriding method
+-
+-
+-package JavaTask16B;
+-
+-public class ChildClass extends ParentClass{
+-    public static void main(String[] args) {
+-        ChildClass mabel = new ChildClass();
+-        mabel.driveFastCars("Bugatti", 2);
+-        mabel.playBoardGames("Chess", true);
+-
+-    }
+-    public void playBoardGames(String type, boolean condition){
+-        System.out.println("mabel is a Chess champion");
+-    }
+-    public void driveFastCars(String type, int number){
+-        System.out.println("mabel drives two fast cars");
+-    }
+-}
+Index: src/JavaTask12Package1/ClassA.java
+===================================================================
+diff --git a/src/JavaTask12Package1/ClassA.java b/src/JavaTask12Package1/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask12Package1/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,17 +0,0 @@
+-//Create two packages.
+-//in each of the packages create one class each Class A and Class B.
+-//create a method in class A that can be accessed anywhere in that project and
+-//create a method in Class B that can only be accessed within a class.
+-
+-package JavaTask12Package1;
+-
+-import JavaTask12Package2.ClassB;
+-
+-public class ClassA {
+-    public static void main(String[] args) {
+-    }
+-
+-    public void classAMethod(){
+-        System.out.println("This is a public method for ClassA");
+-    }
+-}
+Index: src/JavaTask13/ClassB.java
+===================================================================
+diff --git a/src/JavaTask13/ClassB.java b/src/JavaTask13/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask13/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,11 +0,0 @@
+-//Create 3 different constructors of a class A.
+-//Create 3 objects of Class A in class B and
+-//use the 3 different constructors when creating each of the objects of class A in class B
+-
+-package JavaTask13;
+-
+-public class ClassB {
+-    public static void main(String[] args) {
+-        ClassA superCar = new ClassA("Bugatti", "Mistral", false);
+-    }
+-}
+Index: src/JavaTask9A.java
+===================================================================
+diff --git a/src/JavaTask9A.java b/src/JavaTask9A.java
+deleted file mode 100644
+--- a/src/JavaTask9A.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,19 +0,0 @@
+-//I have a list of numbers, 1-10,
+-// write a loop that prints odd if it is an odd number and
+-// a loop that prints even if it is an even number.
+-
+-
+-
+-public class JavaTask9A {
+-    public static void main(String[] args) {
+-        for( int n = 1; n <= 10; n++){
+-            if (n % 2 == 0){
+-                System.out.println("even");
+-            }else{
+-                System.out.println("odd");
+-            }
+-
+-        }
+-
+-    }
+-}
+Index: src/JavaTask13/ClassA.java
+===================================================================
+diff --git a/src/JavaTask13/ClassA.java b/src/JavaTask13/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask13/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,24 +0,0 @@
+-//Create 3 different constructors of a class A.
+-//Create 3 objects of Class A in class B and
+-//use the 3 different constructors when creating each of the objects of class A in class B
+-
+-
+-package JavaTask13;
+-
+-public class ClassA {
+-    String name;
+-    String model;
+-    boolean Electric;
+-
+-    public ClassA(String carName) {
+-        name = carName;
+-    }
+-
+-    public ClassA(String carName, String carModel) {
+-        model = carModel;
+-    }
+-
+-    public ClassA(String carName, String carModel, boolean electricCar) {
+-        Electric = electricCar;
+-    }
+-}
+Index: src/JavaTask14/ClassA.java
+===================================================================
+diff --git a/src/JavaTask14/ClassA.java b/src/JavaTask14/ClassA.java
+deleted file mode 100644
+--- a/src/JavaTask14/ClassA.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,37 +0,0 @@
+-//You are to create 3 variables for a "square shape" class which will be "class A",
+-//shapeSides (number of sides of the shape), shape length and shape breadth.
+-//From your knowledge of encapsulation, create getters and setters for length and breadth variables and
+-//create only a getter for shape side(this is because we don't want anyone setting the sides of a square. the sides of the square must and always will be 4).
+-//Create another class "B", set the values of length and breadth.
+-//Get the value of the length and breadth and calculate the area.
+-//print out your final calculation like this.
+-//"The area of a square of length: {put the value of the length} and breadth {put the value of the breadth} is {put the value of the area u calculated}"
+-
+-
+-package JavaTask14;
+-
+-public class ClassA {
+-    int sides = 4;
+-   private int length;
+-    private int breadth;
+-
+-    public int getSides() {
+-        return sides;
+-    }
+-
+-    public int getLength() {
+-        return length;
+-    }
+-
+-    public void setLength(int length) {
+-        this.length = length;
+-    }
+-
+-    public int getBreadth() {
+-        return breadth;
+-    }
+-
+-    public void setBreadth(int breadth) {
+-        this.breadth = breadth;
+-    }
+-}
+Index: src/JavaTask16A.java
+===================================================================
+diff --git a/src/JavaTask16A.java b/src/JavaTask16A.java
+deleted file mode 100644
+--- a/src/JavaTask16A.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,21 +0,0 @@
+-//OVERLOADING: Create a method in a class and Overload in using the 3 different ways of overloading that you know.
+-
+-public class JavaTask16A {
+-
+-    public void testTools() {
+-
+-    }
+-    public void testTools(String automationTestTool) {
+-
+-    }
+-    public void testTools(String automationTestTool, String testManagementTool) {
+-
+-    }
+-    public void testTools(String automationTestTool, boolean appiumIsAnAutomationTool) {
+-
+-    }
+-    public void testTools(boolean appiumIsAnAutomationTool, String automationTestTool) {
+-
+-    }
+-
+-}
+Index: src/JavaTask5.java
+===================================================================
+diff --git a/src/JavaTask5.java b/src/JavaTask5.java
+deleted file mode 100644
+--- a/src/JavaTask5.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,20 +0,0 @@
+-//Write a code to: If the number is divisible by 3, print Fizz instead of the number.
+-//If the number is divisible by 5, print Buzz instead of the number.
+-//If the number is divisible by 3 and 5 both, print FizzBuzz instead of the number.
+-
+-
+-
+-public class JavaTask5 {
+-    public static void main(String[] args) {
+-
+-        for (int number = 1; number <= 100; number++){
+-            if (number % 3 == 0 && number % 5 == 0){
+-                System.out.println("FizzBuzz");
+-            }else if (number%3 == 0){
+-                System.out.println("Fizz");
+-            }else if (number%5 == 0){
+-                System.out.println("Buzz");
+-            }
+-        }
+-    }
+-}
+Index: src/JavaTask11/Automobile.java
+===================================================================
+diff --git a/src/JavaTask11/Automobile.java b/src/JavaTask11/Automobile.java
+deleted file mode 100644
+--- a/src/JavaTask11/Automobile.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,15 +0,0 @@
+-//Create a class A, create a method that accepts a String parameter "name" and returns the "name" value.
+-// Create an object of that class in another class  "B" and SOUT the contents from the methods in class A
+-
+-
+-package JavaTask11;
+-
+-public class Automobile {
+-    String name;
+-
+-    public void Truck(String truckName){
+-        name = truckName;
+-
+-        System.out.println(name);
+-    }
+-}
+Index: src/JavaTask17A.java
+===================================================================
+diff --git a/src/JavaTask17A.java b/src/JavaTask17A.java
+deleted file mode 100644
+--- a/src/JavaTask17A.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,24 +0,0 @@
+-//You are required to build the blueprint for your company's login page.
+-//From the discussions with the product team,
+-//all login pages will have a username field, password field, forgot password field, and sign-in button
+-//while other elements like remember me checkbox, continue to homePage, OAuth button will not be applicable to all login pages.
+-//with your knowledge of Abstract classes, Create a class that others developers will have to inherit from.
+-
+-
+-
+-public abstract class JavaTask17A {
+-    public abstract void username();
+-    public abstract void password();
+-    public abstract void forgotPassword();
+-    public abstract void signIn();
+-    public void rememberMw(){
+-        System.out.println("Remember me checkbox");
+-    }
+-    public void continueToHomePage(){
+-        System.out.println("Would you like to continue to the homepage?");
+-    }
+-    public void OAuth(){
+-        System.out.println("OAuth button");
+-    }
+-
+-}
+Index: src/JavaTask12Package2/ClassB.java
+===================================================================
+diff --git a/src/JavaTask12Package2/ClassB.java b/src/JavaTask12Package2/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask12Package2/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,19 +0,0 @@
+-//Create two packages.
+-//in each of the packages create one class each Class A and Class B.
+-//create a method in class A that can be accessed anywhere in that project and
+-//create a method in Class B that can only be accessed within a class.
+-
+-
+-package JavaTask12Package2;
+-
+-import JavaTask12Package1.ClassA;
+-
+-public class ClassB {
+-    public static void main(String[] args) {
+-    }
+-
+-    private void classBMethod(){
+-        System.out.println("This is a private method for ClassB");
+-    }
+-
+-}
+Index: src/JavaTask16B/ParentClass.java
+===================================================================
+diff --git a/src/JavaTask16B/ParentClass.java b/src/JavaTask16B/ParentClass.java
+deleted file mode 100644
+--- a/src/JavaTask16B/ParentClass.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,15 +0,0 @@
+-//OVERRIDING: Create two methods in a parent class with arguments.
+-//Write a print statement in the method body,
+-//Override the 2 methods in the child class and write a different print statement in the body of the overriding method
+-
+-
+-package JavaTask16B;
+-
+-public class ParentClass {
+-    public void playBoardGames(String type, boolean condition){
+-        System.out.println("I am a Chess champion");
+-    }
+-    public void driveFastCars(String type, int number){
+-        System.out.println("I drive two fast cars");
+-    }
+-}
+Index: src/JavaTask7.java
+===================================================================
+diff --git a/src/JavaTask7.java b/src/JavaTask7.java
+deleted file mode 100644
+--- a/src/JavaTask7.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,20 +0,0 @@
+-//create a two-dimensional array with 4 rows and 3 columns.
+-// Fill only the first column with any fruits of ur choice
+-
+-
+-import java.util.Arrays;
+-
+-public class JavaTask7 {
+-    public static void main(String[] args) {
+-        String [] [] Fruit = new String [4] [3];
+-
+-        Fruit [0] [0] = "Pawpaw";
+-        Fruit [1] [0] = "Pineapple";
+-        Fruit [2] [0] = "Apple";
+-        Fruit [3] [0] = "Blueberries";
+-
+-
+-        System.out.println(Arrays.deepToString(Fruit));
+-
+-    }
+-}
+Index: .idea/uiDesigner.xml
+===================================================================
+diff --git a/.idea/uiDesigner.xml b/.idea/uiDesigner.xml
+deleted file mode 100644
+--- a/.idea/uiDesigner.xml	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,124 +0,0 @@
+-<?xml version="1.0" encoding="UTF-8"?>
+-<project version="4">
+-  <component name="Palette2">
+-    <group name="Swing">
+-      <item class="com.intellij.uiDesigner.HSpacer" tooltip-text="Horizontal Spacer" icon="/com/intellij/uiDesigner/icons/hspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="1" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="com.intellij.uiDesigner.VSpacer" tooltip-text="Vertical Spacer" icon="/com/intellij/uiDesigner/icons/vspacer.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="1" anchor="0" fill="2" />
+-      </item>
+-      <item class="javax.swing.JPanel" icon="/com/intellij/uiDesigner/icons/panel.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JScrollPane" icon="/com/intellij/uiDesigner/icons/scrollPane.svg" removable="false" auto-create-binding="false" can-attach-label="true">
+-        <default-constraints vsize-policy="7" hsize-policy="7" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JButton" icon="/com/intellij/uiDesigner/icons/button.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="0" fill="1" />
+-        <initial-values>
+-          <property name="text" value="Button" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JRadioButton" icon="/com/intellij/uiDesigner/icons/radioButton.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="RadioButton" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JCheckBox" icon="/com/intellij/uiDesigner/icons/checkBox.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="3" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="CheckBox" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JLabel" icon="/com/intellij/uiDesigner/icons/label.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="8" fill="0" />
+-        <initial-values>
+-          <property name="text" value="Label" />
+-        </initial-values>
+-      </item>
+-      <item class="javax.swing.JTextField" icon="/com/intellij/uiDesigner/icons/textField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JPasswordField" icon="/com/intellij/uiDesigner/icons/passwordField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JFormattedTextField" icon="/com/intellij/uiDesigner/icons/formattedTextField.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1">
+-          <preferred-size width="150" height="-1" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextArea" icon="/com/intellij/uiDesigner/icons/textArea.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTextPane" icon="/com/intellij/uiDesigner/icons/textPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JEditorPane" icon="/com/intellij/uiDesigner/icons/editorPane.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JComboBox" icon="/com/intellij/uiDesigner/icons/comboBox.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="2" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JTable" icon="/com/intellij/uiDesigner/icons/table.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JList" icon="/com/intellij/uiDesigner/icons/list.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="2" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTree" icon="/com/intellij/uiDesigner/icons/tree.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3">
+-          <preferred-size width="150" height="50" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JTabbedPane" icon="/com/intellij/uiDesigner/icons/tabbedPane.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSplitPane" icon="/com/intellij/uiDesigner/icons/splitPane.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="3" hsize-policy="3" anchor="0" fill="3">
+-          <preferred-size width="200" height="200" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JSpinner" icon="/com/intellij/uiDesigner/icons/spinner.svg" removable="false" auto-create-binding="true" can-attach-label="true">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSlider" icon="/com/intellij/uiDesigner/icons/slider.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="8" fill="1" />
+-      </item>
+-      <item class="javax.swing.JSeparator" icon="/com/intellij/uiDesigner/icons/separator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="6" anchor="0" fill="3" />
+-      </item>
+-      <item class="javax.swing.JProgressBar" icon="/com/intellij/uiDesigner/icons/progressbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JToolBar" icon="/com/intellij/uiDesigner/icons/toolbar.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="6" anchor="0" fill="1">
+-          <preferred-size width="-1" height="20" />
+-        </default-constraints>
+-      </item>
+-      <item class="javax.swing.JToolBar$Separator" icon="/com/intellij/uiDesigner/icons/toolbarSeparator.svg" removable="false" auto-create-binding="false" can-attach-label="false">
+-        <default-constraints vsize-policy="0" hsize-policy="0" anchor="0" fill="1" />
+-      </item>
+-      <item class="javax.swing.JScrollBar" icon="/com/intellij/uiDesigner/icons/scrollbar.svg" removable="false" auto-create-binding="true" can-attach-label="false">
+-        <default-constraints vsize-policy="6" hsize-policy="0" anchor="0" fill="2" />
+-      </item>
+-    </group>
+-  </component>
+-</project>
+\ No newline at end of file
+Index: src/JavaTask15/ClassB.java
+===================================================================
+diff --git a/src/JavaTask15/ClassB.java b/src/JavaTask15/ClassB.java
+deleted file mode 100644
+--- a/src/JavaTask15/ClassB.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,23 +0,0 @@
+-//Create a parent class "A" with 3 methods.
+-//create a child class "B" with 2 methods.
+-//add a print statement in all the 5 methods.
+-//Invoke all 5 methods in a main method in the child class "B"
+-
+-package JavaTask15;
+-
+-public class ClassB extends ClassA{
+-    public static void main(String[] args) {
+-        ClassB car = new ClassB();
+-        car.superCar();
+-        car.model();
+-        car.horsePower();
+-        car.cylinderEngine();
+-        car.price();
+-    }
+-    public void cylinderEngine(){
+-        System.out.println("The Lamborghini Revuelto has a V-12 cylinder engine");
+-    }
+-    public void price(){
+-        System.out.println("The price of the Lamborghini Revuelto is: $608,358");
+-    }
+-}
+Index: src/JavaTask19A.java
+===================================================================
+diff --git a/src/JavaTask19A.java b/src/JavaTask19A.java
+deleted file mode 100644
+--- a/src/JavaTask19A.java	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
++++ /dev/null	(revision 0bdd1748faa6203e56f7bd01a83c4dc70ca963bd)
+@@ -1,17 +0,0 @@
+-//FINAL: create 3 variables of a class A, ballSize, ballColour, ballTexture.
+-//and make it impossible to change the value the ballSize in any method in that class
+-
+-
+-
+-public class JavaTask19A {
+-    final int ballSize;
+-    public JavaTask19A() {
+-        ballSize = 6;
+-    }
+-
+-    String ballColour;
+-    String ballTexture;
+-
+-
+-
+-}
