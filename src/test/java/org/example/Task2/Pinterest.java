@@ -12,7 +12,7 @@ public class Pinterest {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to pinterest url
+        //navigate to Pinterest url
         driver.get("https://www.pinterest.com/");
     }
 }

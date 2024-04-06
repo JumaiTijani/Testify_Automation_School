@@ -12,7 +12,7 @@ public class Konga {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to konga url
+        //navigate to Konga url
         driver.get("https://www.konga.com/");
     }
 }

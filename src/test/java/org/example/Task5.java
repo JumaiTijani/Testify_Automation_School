@@ -18,7 +18,7 @@ public class Task5 {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to the url
+        //navigate to saucedemo url
         driver.get("https://saucedemo.com");
         Thread.sleep(5000);
         //input username

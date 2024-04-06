@@ -12,7 +12,7 @@ public class Google {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to the google url
+        //navigate to google url
         driver.get("https://www.google.com/");
     }
 }

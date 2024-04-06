@@ -15,7 +15,7 @@ public class Task7 {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to the url
+        //navigate to worldweather url
         driver.get("https://worldweather.wmo.int/en/home.html");
         Thread.sleep(5000);
         driver.findElement(By.xpath("//input[@id='q_search']")).sendKeys("Lagos,Nigeria");

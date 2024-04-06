@@ -15,7 +15,7 @@ public class Task4 {
         WebDriver driver = new ChromeDriver();
         //maximize the browser
         driver.manage().window().maximize();
-        //navigate to the url
+        //navigate to guru99 url
         driver.get("https://demo.guru99.com/");
         Thread.sleep(5000);
         //find the element "Security Project" and click on it
