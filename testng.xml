@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Openqa_Test_Suite">
+    <test name="OpenQA">
+        <classes>
+            <class name="org.example.Task17.Task17A"/>
+            <class name="org.example.Task17.Task17B"/>
+            <class name="org.example.Task17.Task17C"/>
+            <class name="org.example.Task17.Task17D"/>
+        </classes>
+    </test>
+</suite>
