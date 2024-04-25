@@ -3,10 +3,7 @@
 <suite name="Openqa_Test_Suite">
     <test name="OpenQA">
         <classes>
-            <class name="org.example.Task17.Task17A"/>
-            <class name="org.example.Task17.Task17B"/>
-            <class name="org.example.Task17.Task17C"/>
-            <class name="org.example.Task17.Task17D"/>
+            <class name="Module4BProject"/>
         </classes>
     </test>
 </suite>
