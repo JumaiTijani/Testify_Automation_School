@@ -227,9 +227,9 @@ public class Module4BProject {
 
 
     }
-    @AfterMethod
-    public void closeBrowser() {
-        driver.quit();
-
-    }
+//    @AfterMethod
+//    public void closeBrowser() {
+//        driver.quit();
+//
+//    }
 }
